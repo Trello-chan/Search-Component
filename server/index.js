@@ -13,4 +13,9 @@ app.use(express.static(path.join(__dirname, '../client/dist/index.html')));
 
 app.use('/api', router)
 
-app.listen(port, () => console.log(`Now listening on search server port: ${port}`));
+if (process.env.NODE_ENV !== 'jest') {
+  app.listen(port, () => console.log(`server is listening on port ${port}`));
+}
+
+
+export default app;
