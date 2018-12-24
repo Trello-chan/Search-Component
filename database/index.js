@@ -12,6 +12,9 @@ const SQL_connection = new Sequelize('trello_search', process.env.USERNAME || 'r
     idle: 10000,
     handleDisconnects: true,
   },
+  define: {
+    timestamps: false
+  }
 })
 
 SQL_connection

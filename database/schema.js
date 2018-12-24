@@ -3,35 +3,32 @@ import SQL_connection from './index';
 
 const Member = SQL_connection.define('member', {
   name: Sequelize.STRING
-}, {
-  timestamps: false
+});
+
+const Team = SQL_connection.define('team', {
+  teamname: Sequelize.STRING //don't really need other fields for a mock module
 });
 
 const Board = SQL_connection.define('board', {
   title: Sequelize.STRING,
-  team_id: { type: Sequelize.STRING, allowNull: true }
-}, {
-  timestamps: false
+  teamId: { type: Sequelize.INTEGER, allowNull: true, references: { model: 'teams', key: 'id' }}
 });
 
-const Team = SQL_connection.define('team', {
-  group: Sequelize.STRING //don't really need other fields for a mock module
-}, {
-  timestamps: false
-});
+// Team.hasMany(Board);
 
-const Card = SQL_connection.define('board', {
-  comment: Sequelize.STRING,
-  description: Sequelize.STRING,
+const Card = SQL_connection.define('card', {
   label: Sequelize.STRING,
+  description: Sequelize.STRING,
+  comment: Sequelize.STRING,
   list: Sequelize.STRING,
-}, {
-  timestamps: false
+  boardId: { type: Sequelize.INTEGER, references: { model: 'boards', key: 'id' }}
 });
 
-const Card_Member = SQL_connection.define('card_member', {}, { timestamps: false });
+// Board.hasMany(Card);
+
+const Card_Member = SQL_connection.define('card_member', {});
 Member.hasMany(Card);
-Card.hasMany(Member);
+Card.belongsToMany(Member, { through: 'card_members' });
 
 SQL_connection.sync();
 
