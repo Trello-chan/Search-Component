@@ -40,7 +40,7 @@ const createBoards = () => {
     let board = faker.random.word();
     let randomTeamId = null;
     if (Math.random() > 0.5) {
-      randomTeamId = Math.floor(Math.random() * entries/4);
+      randomTeamId = Math.ceil(Math.random() * entries/4);
     } 
     boards += `${board}\t${randomTeamId}\n`;
   }
@@ -56,7 +56,7 @@ const createCards = () => {
     let cardDescription = faker.fake();
     let cardComment = faker.fake();
     let listName = faker.random.word();
-    let boardId = Math.floor(Math.random() * entries);
+    let boardId = Math.ceil(Math.random() * entries);
     cards += `${cardLabel}\t${cardDescription}\t${cardComment}\t${listName}\t${boardId}\n`;
   }
   cardDir.write(cards);
@@ -68,8 +68,8 @@ const createCardMemberAssociation = () => {
   //member_id
   console.log('starting createCardMember')
   let cardMember = '';
-  for (let i = 0; i < (entries*2); i++) {
-    let memberId = Math.floor(Math.random() * entries);
+  for (let i = 1; i < (entries*2) + 1; i++) {
+    let memberId = Math.ceil(Math.random() * entries);
     cardMember += `${i}\t${memberId}\n`;
   }
   cardMemberDir.write(cardMember);
