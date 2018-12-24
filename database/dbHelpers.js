@@ -1,16 +1,17 @@
+import SQL_connection from './index';
 import { Member, Board, Team, Card, Card_Member } from './schema';
 
-const getRandomMemberHelper = () => Member.findById(Math.floor(Math.random() * 1000000));
+const getRandomMemberHelper = () => Member.findById(Math.ceil(Math.random() * 100));
 
-const getBoardHelper = query => Board.findOne(query); //either randomId for initial load or name for subsequent query
+const getRandom15BoardsHelper = query => Board.findOne(query); //either randomId for initial load or name for subsequent query
 
 const createBoardHelper = name => Board.create({ name });
 
-const getTeamHelper = () => Team.findAll({ order: 'random()', limit: 10 });
+const getRandom10TeamsHelper = () => Team.findAll({ order: SQL_connection.random(), limit: 10 });
 
 const createTeamHelper = name => Board.create({ name });
 
-const getRandomCardsHelper = () => Card.findAll({ order: 'random()', limit: 50 }); //join card_member to member
+const getRandom50CardsHelper = () => Card.findAll({ order: SQL_connection.random(), limit: 50 }); //join card_member to member
 
 const getCardHelper = query => 
   Card.findOne({ 
@@ -28,11 +29,11 @@ const updateCardHelper = (id, update) =>
 
 export {
   getRandomMemberHelper,
-  getBoardHelper,
+  getRandom15BoardsHelper,
   createBoardHelper,
-  getTeamHelper,
+  getRandom10TeamsHelper,
   createTeamHelper,
-  getRandomCardsHelper,
+  getRandom50CardsHelper,
   getCardHelper,
   updateCardHelper
 }
