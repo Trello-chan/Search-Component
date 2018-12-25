@@ -1,5 +1,5 @@
 import app from '../server/index';
-import { Board, Team } from '../database/schema';
+import { Board, Card, Team } from '../database/schema';
 import supertest from 'supertest';
 
 describe('Search Component: ', () => {
@@ -28,5 +28,15 @@ describe('Search Component: ', () => {
     Team.destroy({ where: { teamname: 'jestTeam' }});
   });
 
+  test('it should get an existing card from the DB', async () => {
+    await Card.create({ label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 });
+    const { body, status } = await supertest(app).get('/api/card?label=jestCard');
+    expect(status).toEqual(200);
+    expect(body.label).toEqual('jestCard');
+    const { body: likeBody, status: likeStatus } = await supertest(app).get('/api/card?label=jest');
+    expect(likeStatus).toEqual(200);
+    expect(likeBody.label).toEqual('jestCard');
+    Card.destroy({ where: { label: 'jestCard' }});
+  });
 
 });
