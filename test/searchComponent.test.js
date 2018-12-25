@@ -1,5 +1,5 @@
 import app from '../server/index';
-import { Board, Card, Team } from '../database/schema';
+import { Board, Card, Team, Card_Member } from '../database/schema';
 import supertest from 'supertest';
 
 describe('Search Component: ', () => {
@@ -43,7 +43,7 @@ describe('Search Component: ', () => {
     await Card.create({ label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 });
     const response = await supertest(app).get('/api/card?label=jestCard');
     let { id } = response.body[0];
-    expect(id).toBeGreaterThan(0);
+    await expect(id).toBeGreaterThan(0);
     await supertest(app).patch('/api/card').send({ id, update: { label: 'jestCard', description: 'jestCard description', comment: 'jestCard comment', list: 'jestCard list', boardId: 5 }});
     const { body, status } = await supertest(app).get('/api/card?label=jestCard');
     let card = body[0];
@@ -53,6 +53,21 @@ describe('Search Component: ', () => {
     expect(card.comment).toEqual('jestCard comment');
     expect(card.list).toEqual('jestCard list');
     expect(card.boardId).toEqual(5);
-    Card.destroy({ where: { label: 'jestCard' }});
+    await Card.destroy({ where: { label: 'jestCard' }});
+  });
+
+  test('it should create a card_member association when provided a memberId', async () => {
+    await Card.create({ label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 });
+    const response = await supertest(app).get('/api/card?label=jestCard');
+    let { id } = response.body[0];
+    await expect(id).toBeGreaterThan(0);
+    await supertest(app).patch('/api/card').send({ id, update: { label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 }, memberId: 6 });
+    const { body, status } = await supertest(app).get('/api/card?label=jestCard');
+    let card = body[0];
+    expect(status).toEqual(200);
+    expect(card.label).toEqual('jestCard');
+    expect(card.members[0].id).toEqual(6);
+    await Card_Member.destroy({ where: { "cardId": id }});
+    await Card.destroy({ where: { label: 'jestCard' }});
   });
 });
