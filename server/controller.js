@@ -7,7 +7,8 @@ import {
   getBoardHelper,
   createTeamHelper,
   getCardHelper,
-  updateCardHelper
+  updateCardHelper,
+  createCardMemberAssociation
 } from '../database/dbHelpers';
 
 const sendInitialLoadData = (req, res) => {
@@ -61,8 +62,15 @@ const getCard = (req, res) => {
 }
 
 const updateCard = (req, res) => {
-  let { id, update } = req.body;
+  let { id, update, memberId } = req.body;
   updateCardHelper(id, update)
+    .then(() => {
+      if (memberId) {
+        createCardMemberAssociation(id, memberId)
+         .then(() => res.status(204).send('success'))
+         .catch(err => res.status(404).send(err));
+      }
+    })
     .then(() => res.status(204).send('success'))
     .catch(err => res.status(404).send(err));
 }

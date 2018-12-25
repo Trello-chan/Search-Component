@@ -34,6 +34,10 @@ const updateCardHelper = (id, update) =>
     { where: { id }}
   )
 
+const createCardMemberAssociation = (cardId, memberId) =>
+    SQL_connection.query(`INSERT INTO card_members ("cardId", "memberId") VALUES (${cardId}, ${memberId})`)
+
+
 export {
   getRandomMemberHelper,
   getRandom15BoardsHelper,
@@ -43,5 +47,6 @@ export {
   createTeamHelper,
   getRandom50CardsHelper,
   getCardHelper,
-  updateCardHelper
+  updateCardHelper,
+  createCardMemberAssociation
 }
