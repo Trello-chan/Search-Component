@@ -4,24 +4,11 @@ import {
   getRandom10TeamsHelper,
   getRandom50CardsHelper,
   createBoardHelper,
+  getBoardHelper,
   createTeamHelper,
   getCardHelper,
   updateCardHelper
 } from '../database/dbHelpers';
-
-/*
-
-on load send the following information
-
-randomMember
-
-random 15 boards
-
-get random 10 teams
-
-get random cards
-
-*/
 
 const sendInitialLoadData = (req, res) => {
   let data = {}
@@ -42,8 +29,24 @@ const sendInitialLoadData = (req, res) => {
             })
         })
     })
+};
+
+const createBoard = (req, res) => {
+  let { title } = req.body;
+  createBoardHelper(title)
+    .then(() => res.status(201).send('success'))
+    .catch(err => res.status(404).send(err));
+}
+
+const getBoard = (req, res) => {
+  let { title } = req.query;
+  createBoardHelper(title)
+    .then(board => res.status(200).send(board))
+    .catch(err => res.status(404).send(err));
 }
 
 export {
+  createBoard,
+  getBoard,
   sendInitialLoadData,
 }
