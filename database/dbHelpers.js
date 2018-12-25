@@ -5,7 +5,9 @@ const getRandomMemberHelper = () => Member.findById(Math.ceil(Math.random() * 10
 
 const getRandom15BoardsHelper = query => Board.findOne(query); //either randomId for initial load or name for subsequent query
 
-const createBoardHelper = name => Board.create({ name });
+const createBoardHelper = title => Board.create({ title });
+
+const getBoardHelper = title => Board.findOne({ title });
 
 const getRandom10TeamsHelper = () => Team.findAll({ order: SQL_connection.random(), limit: 10 });
 
@@ -31,6 +33,7 @@ export {
   getRandomMemberHelper,
   getRandom15BoardsHelper,
   createBoardHelper,
+  getBoardHelper,
   getRandom10TeamsHelper,
   createTeamHelper,
   getRandom50CardsHelper,
