@@ -59,10 +59,18 @@ const getCard = (req, res) => {
     .catch(err => res.status(404).send(err));
 }
 
+const updateCard = (req, res) => {
+  let { id, update } = req.body;
+  updateCardHelper(id, update)
+    .then(() => res.status(204).send('success'))
+    .catch(err => res.status(404).send(err));
+}
+
 export {
   createBoard,
   getBoard,
   createTeam,
   getCard,
   sendInitialLoadData,
+  updateCard
 }

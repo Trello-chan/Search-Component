@@ -1,5 +1,5 @@
 import express from 'express';
-import { createBoard, getBoard, createTeam, getCard, sendInitialLoadData } from './controller';
+import { createBoard, getBoard, createTeam, getCard, sendInitialLoadData, updateCard } from './controller';
 
 const router = express.Router();
 
@@ -15,5 +15,6 @@ router.route('/team')
 
 router.route('/card')
   .get(getCard)
+  .patch(updateCard)
 
 export default router;
