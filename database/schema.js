@@ -27,7 +27,7 @@ const Card = SQL_connection.define('card', {
 // Board.hasMany(Card);
 
 const Card_Member = SQL_connection.define('card_member', {});
-Member.hasMany(Card);
+// Member.hasMany(Card);
 Card.belongsToMany(Member, { through: 'card_members' });
 
 SQL_connection.sync();
