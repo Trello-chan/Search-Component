@@ -32,26 +32,27 @@ describe('Search Component: ', () => {
     await Card.create({ label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 });
     const { body, status } = await supertest(app).get('/api/card?label=jestCard');
     expect(status).toEqual(200);
-    expect(body.label).toEqual('jestCard');
+    expect(body[0].label).toEqual('jestCard');
     const { body: likeBody, status: likeStatus } = await supertest(app).get('/api/card?label=jest');
     expect(likeStatus).toEqual(200);
-    expect(likeBody.label).toEqual('jestCard');
+    expect(likeBody[0].label).toEqual('jestCard');
     Card.destroy({ where: { label: 'jestCard' }});
   });
 
   test('it should update an existing card from the DB', async () => {
     await Card.create({ label: 'jestCard', description: 'jestCard', comment: 'jestCard', list: 'jestCard', boardId: 5 });
     const response = await supertest(app).get('/api/card?label=jestCard');
-    let { id } = response.body;
+    let { id } = response.body[0];
     expect(id).toBeGreaterThan(0);
     await supertest(app).patch('/api/card').send({ id, update: { label: 'jestCard', description: 'jestCard description', comment: 'jestCard comment', list: 'jestCard list', boardId: 5 }});
     const { body, status } = await supertest(app).get('/api/card?label=jestCard');
+    let card = body[0];
     expect(status).toEqual(200);
-    expect(body.label).toEqual('jestCard');
-    expect(body.description).toEqual('jestCard description');
-    expect(body.comment).toEqual('jestCard comment');
-    expect(body.list).toEqual('jestCard list');
-    expect(body.boardId).toEqual(5);
+    expect(card.label).toEqual('jestCard');
+    expect(card.description).toEqual('jestCard description');
+    expect(card.comment).toEqual('jestCard comment');
+    expect(card.list).toEqual('jestCard list');
+    expect(card.boardId).toEqual(5);
     Card.destroy({ where: { label: 'jestCard' }});
   });
 });

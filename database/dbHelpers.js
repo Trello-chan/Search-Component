@@ -17,12 +17,16 @@ const getBoardHelper = title => Board.findOne({ where: { title }});
 const createTeamHelper = teamname => Team.create({ teamname });
 
 const getCardHelper = label => 
-  Card.findOne({
+  Card.findAll({
     where: {
       label: { [Sequelize.Op.like]: `%${label}%` }
-    }
+    },
+    include: [{
+      model: Member
+    }]
   }); 
-//join card_member to member
+
+  // select c.*, m.* from cards c inner join card_members cm on c.id = cm."cardId" inner join members m on m.id = cm."memberId" where c.label like '%__INSERT QUERY__%' order by random() limit 10;
 
 const updateCardHelper = (id, update) =>
   Card.update(
