@@ -69,8 +69,10 @@ const createCardMemberAssociation = () => {
   console.log('starting createCardMember')
   let cardMember = '';
   for (let i = 1; i < (entries*2) + 1; i++) {
-    let memberId = Math.ceil(Math.random() * entries);
-    cardMember += `${i}\t${memberId}\n`;
+    if (Math.random() > 0.5) {
+      let memberId = Math.ceil(Math.random() * entries);
+      cardMember += `${i}\t${memberId}\n`;
+    } 
   }
   cardMemberDir.write(cardMember);
   console.log('ending createCardMember')
