@@ -11,8 +11,9 @@ import {
 } from '../database/dbHelpers';
 
 const sendInitialLoadData = (req, res) => {
+  let { id } = req.query;
   let data = {}
-  getRandomMemberHelper()
+  getRandomMemberHelper(id)
     .then(member => {
       data.member = member;
       getRandom15BoardsHelper()

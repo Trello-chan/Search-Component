@@ -4,7 +4,7 @@ import supertest from 'supertest';
 
 describe('Search Component: ', () => {
   test('it should provide data from db', async () => {
-    const { body, status} = await supertest(app).get('/api/load');
+    const { body, status} = await supertest(app).get('/api/load?id=6');
     expect(status).toEqual(200);
     expect(body).toHaveProperty('member');
     expect(body).toHaveProperty('boards');
