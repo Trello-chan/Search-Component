@@ -13,7 +13,7 @@ describe('Search Component: ', () => {
   });
 
   test('it should add to the DB', async () => {
-    const { status } = await supertest(app).post('/api/board', { title: 'jest' });
+    const { status } = await supertest(app).post('/api/board').send({ title: 'jest' });
     expect(status).toEqual(201);
     const { body } = await supertest(app).get('/api/board?title=jest');
     expect(body.title).toEqual('jest');

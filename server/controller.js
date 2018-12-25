@@ -40,7 +40,7 @@ const createBoard = (req, res) => {
 
 const getBoard = (req, res) => {
   let { title } = req.query;
-  createBoardHelper(title)
+  getBoardHelper(title)
     .then(board => res.status(200).send(board))
     .catch(err => res.status(404).send(err));
 }
