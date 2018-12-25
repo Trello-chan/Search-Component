@@ -52,9 +52,17 @@ const createTeam = (req, res) => {
     .catch(err => res.status(404).send(err));
 }
 
+const getCard = (req, res) => {
+  let { label } = req.query;
+  getCardHelper(label)
+    .then(card => res.status(200).send(card))
+    .catch(err => res.status(404).send(err));
+}
+
 export {
   createBoard,
   getBoard,
   createTeam,
+  getCard,
   sendInitialLoadData,
 }
