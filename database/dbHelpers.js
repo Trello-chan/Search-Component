@@ -11,7 +11,7 @@ const getBoardHelper = title => Board.findOne({ where: { title }});
 
 const getRandom10TeamsHelper = () => Team.findAll({ order: SQL_connection.random(), limit: 10 });
 
-const createTeamHelper = name => Board.create({ name });
+const createTeamHelper = teamname => Team.create({ teamname });
 
 const getRandom50CardsHelper = () => Card.findAll({ order: SQL_connection.random(), limit: 50 }); //join card_member to member
 

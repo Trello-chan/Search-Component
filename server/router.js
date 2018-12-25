@@ -1,5 +1,5 @@
 import express from 'express';
-import { createBoard, getBoard, sendInitialLoadData } from './controller';
+import { createBoard, getBoard, createTeam, sendInitialLoadData } from './controller';
 
 const router = express.Router();
 
@@ -9,5 +9,8 @@ router.route('/load')
 router.route('/board')
   .get(getBoard)
   .post(createBoard)
+
+router.route('/team')
+  .post(createTeam)
 
 export default router;

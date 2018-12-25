@@ -45,8 +45,16 @@ const getBoard = (req, res) => {
     .catch(err => res.status(404).send(err));
 }
 
+const createTeam = (req, res) => {
+  let { teamname } = req.body;
+  createTeamHelper(teamname)
+    .then(() => res.status(201).send('success'))
+    .catch(err => res.status(404).send(err));
+}
+
 export {
   createBoard,
   getBoard,
+  createTeam,
   sendInitialLoadData,
 }
