@@ -52,9 +52,9 @@ const createCards = () => {
   console.log('starting createCards')
   let cards = '';
   for (let i = 0; i < (entries * 2); i++) {
-    let cardLabel = faker.fake();
-    let cardDescription = faker.fake();
-    let cardComment = faker.fake();
+    let cardLabel = faker.random.words();
+    let cardDescription = faker.random.words();
+    let cardComment = faker.random.words();
     let listName = faker.random.word();
     let boardId = Math.ceil(Math.random() * entries);
     cards += `${cardLabel}\t${cardDescription}\t${cardComment}\t${listName}\t${boardId}\n`;
