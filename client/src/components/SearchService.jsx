@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import HomeButton from './buttons/home';
+import HomeButton from './cssImages/home';
+import BoardsDropdown from './BoardsDropdown';
 
 class SearchService extends Component {
   constructor(props) {
@@ -16,10 +17,9 @@ class SearchService extends Component {
       <StyledSearchComponent>
         <GlobalStyle />
         <StyledButton>
-          {/* home button */}
           <HomeButton />
         </StyledButton>
-        {/* boards dropdown */}
+        <BoardsDropdown />
         {/* cards/board search */}
         {/* trello-chan logo */}
         <StyledButton>
@@ -44,8 +44,8 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledSearchComponent = styled.div`
   background: rgba(0,0,0,.35);
-  height: 24px;
-  padding: 4px;
+  height: 26px;
+  padding: 3px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -56,11 +56,14 @@ const StyledButton = styled.div`
   background: rgba(255,255,255,.3);
   border-radius: 3px;
   height: 100%;
-  width: 24px;
+  width: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 4px;
+  margin-right: 3px;
+  &:hover {
+    background-color: rgba(150,150,150,.35);
+  }
 `
 
 export default SearchService;
