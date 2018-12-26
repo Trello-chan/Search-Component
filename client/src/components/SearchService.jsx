@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
+import HomeButton from './buttons/home';
+
 class SearchService extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ class SearchService extends Component {
         <GlobalStyle />
         <StyledButton>
           {/* home button */}
+          <HomeButton />
         </StyledButton>
         {/* boards dropdown */}
         {/* cards/board search */}
