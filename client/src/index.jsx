@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './components/App';
+import SearchService from './components/SearchService';
 
-render(<App />, document.getElementById('app'));
+render(<SearchService />, document.getElementById('searchService'));
