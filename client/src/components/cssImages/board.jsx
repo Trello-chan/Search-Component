@@ -14,6 +14,7 @@ const StyledBoardTopContainer = styled.div`
   background-color: rgba(255,255,255,0.05);
   border: 1.5px solid white;
   border-radius: 2px;
+  margin: 6px;
 `;
 
 const StyledBoardColumnLeft = styled.div`
