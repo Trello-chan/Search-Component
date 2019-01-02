@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import BoardImage from './cssImages/board';
 
-class BoardDropdown extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
-  render() {
-    return (
-      <StyledBoardTopContainer>
-        <BoardImage/>
-        <StyledBoardText>
-          Boards
-        </StyledBoardText>
-      </StyledBoardTopContainer>
-    )
-  }
-}
+const BoardDropdown = (props) =>
+  <StyledBoardTopContainer onClick={props.changeDisplay}>
+    <BoardImage/>
+    <StyledBoardText>
+      Boards
+    </StyledBoardText>
+  </StyledBoardTopContainer>
 
 const StyledBoardTopContainer = styled.div`
   background: rgba(255,255,255,.3);
   border-radius: 3px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +22,9 @@ const StyledBoardTopContainer = styled.div`
   max-width: 89px;
   min-width: 26px;
   height: 100%;
+  &:hover {
+    background-color: rgba(210,210,210,.35);
+  }
 `;
 
 const StyledBoardText = styled.div`
