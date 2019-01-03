@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import HomeButton from './cssImages/home';
 import BoardsDropdown from './BoardsDropdown';
 import BoardsDropdownDrawer from './BoardsDropdownDrawer';
+import Search from './Search';
 
 class SearchService extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class SearchService extends Component {
           <HomeButton />
         </StyledButton>
         <BoardsDropdown changeDisplay={this.changeDisplay}/>
-        {/* cards/board search */}
+        <Search />
         {/* trello-chan logo */}
         <StyledButton>
           {/* create button */}
