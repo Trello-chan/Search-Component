@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BoardButton = () =>
+const BoardImage = () =>
   <StyledBoardTopContainer>
     <StyledBoardColumnLeft/>
     <StyledBoardColumnRight/>
@@ -32,4 +32,4 @@ const StyledBoardColumnRight = styled.div`
   width: 50%;
 `;
 
-export default BoardButton;
+export default BoardImage;

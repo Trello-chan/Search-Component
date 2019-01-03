@@ -68,15 +68,21 @@ class BoardsDropdownDrawer extends Component {
             </DrawerHeaderContainer>
           </div>
 
-          {personalBoards &&
-            <div>Personal Boards</div>
-          }
+          <div>
+            <DrawerHeaderContainer>
+              <div>&#9734;</div>
+              <header>PERSONAL BOARDS</header>
+              {personalBoards && <Minus title="personalBoards" onClick={this.toggle}>-</Minus>}
+              {!personalBoards && <Plus title="personalBoards" onClick={this.toggle}>+</Plus>}
+            </DrawerHeaderContainer>
+          </div>
+
           <div>
             Groups?
           </div>
-          <div>Create new board...</div>
-          <div>Always keep this menu open.</div>
-          <div>See closed boards...</div>
+          <PaddedDrawerBox>Create new board...</PaddedDrawerBox>
+          <PaddedDrawerBox>Always keep this menu open.</PaddedDrawerBox>
+          <PaddedDrawerBox>See closed boards...</PaddedDrawerBox>
         </DrawerContentContainer>
       </DrawerContainer>
     )
@@ -112,7 +118,7 @@ const DrawerContentContainer = styled.div`
   span {
     font-weight: 400;
   }
-`
+`;
 
 const DrawerHeaderContainer = styled.div`
   display: flex;
@@ -132,6 +138,7 @@ const DrawerHeaderContainer = styled.div`
   }
   & :nth-child(3) {
     border-radius: 2px;
+    cursor: pointer;
     &:hover {
       background: #E8E7E4;
     }
@@ -143,6 +150,13 @@ const DrawerHeaderContainer = styled.div`
     margin: 6px 18px 10px 14px;
   }
 `;
+
+const PaddedDrawerBox = styled.div`
+  cursor: pointer;
+  decoration: underline;
+  padding: 12px 0px 0px;
+  text-decoration: underline;
+`
 
 const Clock = styled.div`
   font-size: .6em !important;

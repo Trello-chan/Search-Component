@@ -5,7 +5,7 @@ import BoardImage from './cssImages/board';
 
 const BoardDropdown = (props) =>
   <StyledBoardTopContainer onClick={props.changeDisplay}>
-    <BoardImage/>
+    <div><BoardImage/></div>
     <StyledBoardText>
       Boards
     </StyledBoardText>
