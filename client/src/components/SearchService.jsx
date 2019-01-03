@@ -3,23 +3,29 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import HomeButton from './cssImages/home';
 import BoardsDropdown from './BoardsDropdown';
+import BoardsDropdownDrawer from './BoardsDropdownDrawer';
 
 class SearchService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      displayOptions: false
     }
   }
 
+  changeDisplay = () => {
+    this.setState({ displayOptions: !this.state.displayOptions})
+  }
+
   render() {
+    let { displayOptions } = this.state;
     return (
       <StyledSearchComponent>
         <GlobalStyle />
         <StyledButton>
           <HomeButton />
         </StyledButton>
-        <BoardsDropdown />
+        <BoardsDropdown changeDisplay={this.changeDisplay}/>
         {/* cards/board search */}
         {/* trello-chan logo */}
         <StyledButton>
@@ -30,6 +36,7 @@ class SearchService extends Component {
         </StyledButton>
         {/* notifications button */}
         {/* member logo */}
+        {displayOptions && <BoardsDropdownDrawer />}
       </StyledSearchComponent>
     )
   }
@@ -37,6 +44,7 @@ class SearchService extends Component {
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background: blue;
     height: 100vh;
     margin: 0px;
   }
@@ -50,11 +58,12 @@ const StyledSearchComponent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 
 const StyledButton = styled.div`
   background: rgba(255,255,255,.3);
   border-radius: 3px;
+  cursor: pointer;
   height: 100%;
   width: 26px;
   display: flex;
@@ -62,8 +71,13 @@ const StyledButton = styled.div`
   align-items: center;
   margin-right: 3px;
   &:hover {
-    background-color: rgba(150,150,150,.35);
+    background-color: rgba(210,210,210,.35);
   }
+`;
+
+const StyledBoardsSearchDrawer = styled.div`
+  position: absolute;
+  top: 28px;
 `
 
 export default SearchService;
