@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import ExpandImage from '../cssImages/expand';
 import SearchDrawerDefault from './SearchDrawerDefault';
@@ -9,7 +10,9 @@ class Search extends Component {
     super(props);
     this.state = {
       inputting: false,
-
+      searching: false,
+      doneSearching: false,
+      cards: []
     }
   }
 
@@ -17,19 +20,58 @@ class Search extends Component {
     this.setState({ inputting: !this.state.inputting });
   }
 
+  findCardLabel = (label) => {
+    axios
+      .get(`/api/card?label=${label}`)
+      .then(({data}) => { 
+        console.log(data)
+        this.setState({ cards: data, searching: false, doneSearching: true }), () => console.log(this.state)
+      })
+      .catch(err => console.error(err));
+  }
+
+  searching = (e) => {
+    let { value } = e.target;
+    if (value !== '') {
+      this.setState({ searching: true }, () => this.findCardLabel(value));
+    }
+  }
+
   render() {
-    let { inputting } = this.state;
+    let { cards, doneSearching, inputting, searching } = this.state;
     return (
       <StyledSearchTopContainer style={{ background: inputting ? 'white': 'rgba(255,255,255,.3)' }}>
         {!inputting && <div onClick={this.changeInput}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
         {inputting && 
           <InputContainer>
-            <input type="text"/>
+            <input type="text" onChange={this.searching}/>
             <ExpandImage />
             <div onClick={this.changeInput}>&#215;</div>
           </InputContainer>}
-        {inputting && 
-          <SearchDrawerDefault />
+        {inputting &&
+          <DrawerContainer>
+            {!searching && !doneSearching && cards.length === 0 &&
+              <SearchDrawerDefault />
+            }
+            {(searching || cards.length > 0) &&
+              <div>
+                <ResultNav>
+                  <div></div>
+                  <div>
+                    <div>
+                      <span>←</span>
+                      <span><ul>Back to Saved Searches</ul></span>
+                    </div>
+                    <div>
+                      <span>☆</span>
+                      <span><ul>Save this Search</ul></span>
+                    </div>
+                  </div>
+                </ResultNav>
+                {/* results */}
+              </div>
+            }
+          </DrawerContainer>
         }
       </StyledSearchTopContainer>
     )
@@ -46,21 +88,23 @@ const BlankSpace = styled.div`
     cursor: pointer;
     font-size: 10px;
   }
-`
+`;
 
 const InputContainer = styled.div`
   color: #6b808c;
-  & :nth-child(1) {
+  > :nth-child(1) {
     border-width: 0px;
     outline: none;
     width: 170px;
   }
-  & :nth-child(3) {
+  > :nth-child(3) {
     font-size: 1.3em;
     line-height: 18px;
   }
-
-`
+  > :nth-child(n + 2) {
+    cursor: pointer;
+  }
+`;
 
 const StyledSearchTopContainer = styled.div`
   border-radius: 3px;
@@ -72,18 +116,39 @@ const StyledSearchTopContainer = styled.div`
   min-width: 26px;
   height: 100%;
   padding: 0px 5px;
-  & :nth-child(1) {
+  > :nth-child(1) {
     display: flex;
     flex-direction: row;
-  }
-  & :nth-child(2) {
-    & :nth-child(1) {
-      display: block;
-    }
   }
   @media screen and (max-width: 600px) {
     padding: 0px;
   }
 `;
+
+const DrawerContainer = styled.div`
+  background-color: #ebeef0;
+  border-radius: 2px;
+  color: #6b808c;
+  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-size: 11px;
+  left: 106px;
+  min-height: 125px;
+  position: absolute;
+  top: 34px;
+  width: 460px;
+  padding: 10px;
+`;
+
+const ResultNav = styled.div`
+  display: flex;
+  flex-direction: row;
+  > * {
+    display: flex;
+    flex-direction: row;
+    background: green;
+    height: 20px;
+    width: 50%;
+  }
+`
 
 export default Search;
