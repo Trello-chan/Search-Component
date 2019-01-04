@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import HomeButton from './cssImages/home';
 import BoardsDropdown from './BoardsDropdown';
 import BoardsDropdownDrawer from './BoardsDropdownDrawer';
-import Search from './Search';
+import Search from './Search/Search';
 
 class SearchService extends Component {
   constructor(props) {
