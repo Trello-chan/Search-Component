@@ -9,12 +9,21 @@ class Search extends Component {
     }
   }
 
+  changeInput = () => {
+    this.setState({ inputting: !this.state.inputting });
+  }
+
   render() {
     let { inputting } = this.state;
     return (
-      <StyledSearchTopContainer>
-        {/* <StyledWidth /> */}
-        {!inputting && <div><BlankSpace></BlankSpace><div>&#128270;</div></div>}
+      <StyledSearchTopContainer style={{ background: inputting ? 'white': 'rgba(255,255,255,.3)' }}>
+        {!inputting && <div onClick={this.changeInput}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
+        {inputting && 
+          <InputContainer>
+            <input type="text"/>
+            <div>expand</div>
+            <div onClick={this.changeInput}>X</div>
+          </InputContainer>}
       </StyledSearchTopContainer>
     )
   }
@@ -22,7 +31,7 @@ class Search extends Component {
 
 const BlankSpace = styled.div`
   cursor: text;
-  width: 110px;
+  width: 118px;
   @media screen and (max-width: 600px) {
     width: 0px;
   }
@@ -32,14 +41,19 @@ const BlankSpace = styled.div`
   }
 `
 
+const InputContainer = styled.div`
+  & :nth-child(1) {
+    width: 170px;
+  }
+`
+
 const StyledSearchTopContainer = styled.div`
-  background: rgba(255,255,255,.3);
   border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 3.5px;
-  max-width: 145px;
+  max-width: 240px;
   min-width: 26px;
   height: 100%;
   padding: 0px 5px;
@@ -49,35 +63,6 @@ const StyledSearchTopContainer = styled.div`
   }
   @media screen and (max-width: 600px) {
     padding: 0px;
-  }
-`;
-
-// const StyledSearchTopContainer = styled.div`
-//   background: rgba(255,255,255,.3);
-//   border-radius: 3px;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-right: 3.5px;
-//   max-width: 180px;
-//   min-width: 26px;
-//   height: 100%;
-//   &:hover {
-//     background-color: rgba(210,210,210,.35);
-//   }
-// `;
-
-const StyledWidth = styled.input`
-  width: 100px;
-  background: rgba(255,255,255,.3);
-  padding: 2px;
-  &:focus {
-    background-color: white;
-  }
-
-  @media screen and (max-width: 600px) {
-    display: none;
   }
 `;
 
