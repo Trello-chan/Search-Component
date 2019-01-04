@@ -125,18 +125,18 @@ const DrawerHeaderContainer = styled.div`
   flex-direction: row;
   height: 25px;
   align-items: center;
-  & :nth-child(1) {
+  > :nth-child(1) {
     font-size: .8em;
     margin-right: 5px;
   }
-  & :nth-child(2) {
+  > :nth-child(2) {
     font-size: 10px;
     font-weight: 500;
     letter-spacing: .04em;
     width: 84%;
     padding-top: 2px;
   }
-  & :nth-child(3) {
+  > :nth-child(3) {
     border-radius: 2px;
     cursor: pointer;
     &:hover {
