@@ -31,6 +31,10 @@ class BoardsDropdownDrawer extends Component {
     this.setState({ query: e.target.value });
   }
 
+  randomColor = () => {
+    return `rgba(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+  }
+
   toggle = (e) => {
     let { title } = e.target;
     this.setState({ [title]: !this.state[title]})
@@ -38,6 +42,7 @@ class BoardsDropdownDrawer extends Component {
 
   render() {
     let { personalBoards, query, recentBoards, starredBoards } = this.state;
+    let { boards } = this.props;
     return (
       <DrawerContainer>
         <form action="" onSubmit={this.searchBoards}>
@@ -66,6 +71,17 @@ class BoardsDropdownDrawer extends Component {
               {recentBoards && <Minus title="recentBoards" onClick={this.toggle}>-</Minus>}
               {!recentBoards && <Plus title="recentBoards" onClick={this.toggle}>+</Plus>}
             </DrawerHeaderContainer>
+            <div></div>
+            {recentBoards && 
+              <div>
+                {boards.map(board => 
+                  <BoardDisplay key={board.id} style={ board.backgroundImage ? { backgroundImage: `url(${board.backgroundImage})`} : { background: this.randomColor()}}>
+                    <div></div>
+                    <div>{board.title}</div>
+                  </BoardDisplay>
+                )}
+              </div>
+            }
           </div>
 
           <div>
@@ -156,6 +172,25 @@ const PaddedDrawerBox = styled.div`
   decoration: underline;
   padding: 12px 0px 0px;
   text-decoration: underline;
+`
+
+const BoardDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+  > :nth-child(1) {
+    height: 28px;
+    width: 30px;
+  }
+  > :nth-child(2) {
+    align-items: center;
+    background: rgba(255,255,255, 0.8);
+    color: #17394d;
+    display: flex; 
+    font-weight: 800;
+    padding: 5px;
+    width: calc(100% - 26px);
+  }
 `
 
 const Clock = styled.div`
