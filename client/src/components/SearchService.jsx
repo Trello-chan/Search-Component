@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import axios from 'axios';
 
 import HomeButton from './cssImages/home';
 import BoardsDropdown from './BoardsDropdown';
@@ -10,16 +11,30 @@ class SearchService extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayOptions: false
+      displayOptions: false,
+      userData: {}
     }
+  }
+
+  componentDidMount() {
+    this.fetchLoadData();
   }
 
   changeDisplay = () => {
     this.setState({ displayOptions: !this.state.displayOptions})
   }
 
+  fetchLoadData = () => {
+    let id = Math.ceil(Math.random() * 100);
+    axios
+      .get(`/api/load?id=${id}`)
+      .then(({ data }) => this.setState({ userData: data }, () => console.log(data)))
+      .catch(err => console.error(err));
+  }
+
   render() {
     let { displayOptions } = this.state;
+    let { boards } = this.state.userData;
     return (
       <StyledSearchComponent>
         <GlobalStyle />
@@ -37,7 +52,7 @@ class SearchService extends Component {
         </StyledButton>
         {/* notifications button */}
         {/* member logo */}
-        {displayOptions && <BoardsDropdownDrawer />}
+        {displayOptions && <BoardsDropdownDrawer boards={boards}/>}
       </StyledSearchComponent>
     )
   }
