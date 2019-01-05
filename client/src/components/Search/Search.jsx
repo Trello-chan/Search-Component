@@ -16,6 +16,10 @@ class Search extends Component {
     }
   }
 
+  backToDefault = () => {
+    this.setState({ doneSearching: false, cards: [] });
+  }
+
   changeInput = () => {
     this.setState({ inputting: !this.state.inputting });
   }
@@ -58,13 +62,13 @@ class Search extends Component {
                 <ResultNav>
                   <div></div>
                   <div>
-                    <div>
-                      <span>←</span>
-                      <span><ul>Back to Saved Searches</ul></span>
+                    <div onClick={this.backToDefault}>
+                      <span>←{' '}</span>
+                      <span><u>Back to Saved Searches</u></span>
                     </div>
-                    <div>
-                      <span>☆</span>
-                      <span><ul>Save this Search</ul></span>
+                    <div onClick={this.backToDefault}>
+                      <span>☆{' '}</span>
+                      <span><u>Save this Search</u></span>
                     </div>
                   </div>
                 </ResultNav>
@@ -145,10 +149,26 @@ const ResultNav = styled.div`
   > * {
     display: flex;
     flex-direction: row;
-    background: green;
     height: 20px;
-    width: 50%;
   }
-`
+  > :nth-child(1) {
+    width: 45%;
+  }
+  > :nth-child(2) {
+    width: 55%;
+    > * {
+      letter-spacing: .02em;
+      > * {
+        cursor: pointer;
+        &:hover {
+            color: black;
+          }
+      }
+    }
+    > :nth-child(1) {
+      padding-right: 10px
+    }
+  }
+`;
 
 export default Search;
