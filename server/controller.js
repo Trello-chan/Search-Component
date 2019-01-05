@@ -1,6 +1,6 @@
 import {
   getRandomMemberHelper,
-  getRandom15BoardsHelper,
+  getRandom5BoardsHelper,
   getRandom10TeamsHelper,
   getRandom50CardsHelper,
   createBoardHelper,
@@ -17,7 +17,7 @@ const sendInitialLoadData = (req, res) => {
   getRandomMemberHelper(id)
     .then(member => {
       data.member = member;
-      getRandom15BoardsHelper()
+      getRandom5BoardsHelper()
         .then(boards => {
           data.boards = boards;
           getRandom10TeamsHelper()

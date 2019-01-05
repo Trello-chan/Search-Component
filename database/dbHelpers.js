@@ -4,7 +4,7 @@ import { Member, Board, Team, Card, Card_Member } from './schema';
 
 const getRandomMemberHelper = id => Member.findById(id);
 
-const getRandom15BoardsHelper = () => Board.findAll({ order: SQL_connection.random(), limit: 15 }); //either randomId for initial load or name for subsequent query
+const getRandom5BoardsHelper = () => Board.findAll({ order: SQL_connection.random(), limit: 5 }); //either randomId for initial load or name for subsequent query
 
 const getRandom10TeamsHelper = () => Team.findAll({ order: SQL_connection.random(), limit: 10 });
 
@@ -41,7 +41,7 @@ const createCardMemberAssociation = (cardId, memberId) =>
 
 export {
   getRandomMemberHelper,
-  getRandom15BoardsHelper,
+  getRandom5BoardsHelper,
   createBoardHelper,
   getBoardHelper,
   getRandom10TeamsHelper,
