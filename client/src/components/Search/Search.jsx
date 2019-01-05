@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ExpandImage from '../cssImages/expand';
 import SearchDrawerDefault from './SearchDrawerDefault';
+import Results from './Results';
 
 class Search extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Search extends Component {
   searching = (e) => {
     let { value } = e.target;
     if (value !== '') {
-      this.setState({ searching: true }, () => this.findCardLabel(value));
+      this.setState({ searching: true, doneSearching: false }, () => this.findCardLabel(value));
     }
   }
 
@@ -46,21 +47,23 @@ class Search extends Component {
     return (
       <StyledSearchTopContainer style={{ background: inputting ? 'white': 'rgba(255,255,255,.3)' }}>
         {!inputting && <div onClick={this.changeInput}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
+        
         {inputting && 
           <InputContainer>
             <input type="text" onChange={this.searching}/>
             <ExpandImage />
             <div onClick={this.changeInput}>&#215;</div>
           </InputContainer>}
+
         {inputting &&
           <DrawerContainer>
             {!searching && !doneSearching && cards.length === 0 &&
               <SearchDrawerDefault />
             }
-            {(searching || cards.length > 0) &&
+            {(searching || doneSearching || cards.length > 0) &&
               <div>
                 <ResultNav>
-                  <div></div>
+                  <div>{cards.length > 0 && 'CARDS'}</div>
                   <div>
                     <div onClick={this.backToDefault}>
                       <span>←{' '}</span>
@@ -73,6 +76,14 @@ class Search extends Component {
                   </div>
                 </ResultNav>
                 {/* results */}
+                {searching && 
+                  <div>
+                    Searching
+                  </div>
+                }
+                {doneSearching &&
+                  <Results cards={cards}/>
+                }
               </div>
             }
           </DrawerContainer>
