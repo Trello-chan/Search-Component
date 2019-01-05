@@ -63,7 +63,7 @@ class Search extends Component {
             {(searching || doneSearching || cards.length > 0) &&
               <div>
                 <ResultNav>
-                  <div>{cards.length > 0 && 'CARDS'}</div>
+                  <div>{cards.length > 0 && <b>CARDS</b>}</div>
                   <div>
                     <div onClick={this.backToDefault}>
                       <span>←{' '}</span>
