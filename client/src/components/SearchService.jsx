@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
 
 import HomeButton from './cssImages/home';
+import BoardImage from './cssImages/board';
 import BoardsDropdown from './BoardsDropdown';
 import BoardsDropdownDrawer from './BoardsDropdownDrawer';
 import Search from './Search/Search';
@@ -41,9 +42,19 @@ class SearchService extends Component {
         <StyledButton>
           <HomeButton />
         </StyledButton>
+
         <BoardsDropdown changeDisplay={this.changeDisplay}/>
+
         <Search />
+
+        <LogoContainer>
+          <div>
+            <BoardImage/>
+            <div>Trello-chan</div>
+          </div>
+        </LogoContainer>
         {/* trello-chan logo */}
+
         <StyledButton>
           {/* create button */}
         </StyledButton>
@@ -91,9 +102,27 @@ const StyledButton = styled.div`
   }
 `;
 
-const StyledBoardsSearchDrawer = styled.div`
-  position: absolute;
-  top: 28px;
+const LogoContainer = styled.div`
+  width: 35%;
+  > :nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    width: 100%;
+    color: white;
+    > :nth-child(1){
+      height: 13px;
+      width: 12px;
+    }
+    > :nth-child(2) {
+      font-family: Snell Roundhand, cursive;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
 `
 
 export default SearchService;
