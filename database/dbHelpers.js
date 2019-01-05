@@ -24,7 +24,7 @@ const getCardHelper = label =>
     include: [{
       model: Member
     }],
-    limit: 100
+    limit: 5
   }); 
 
   // select c.*, m.* from cards c inner join card_members cm on c.id = cm."cardId" inner join members m on m.id = cm."memberId" where c.label like '%__INSERT QUERY__%' order by random() limit 10;

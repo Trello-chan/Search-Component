@@ -110,7 +110,7 @@ const InputContainer = styled.div`
   > :nth-child(1) {
     border-width: 0px;
     outline: none;
-    width: 170px;
+    width: 180px;
   }
   > :nth-child(3) {
     font-size: 1.3em;
