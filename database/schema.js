@@ -11,7 +11,8 @@ const Team = SQL_connection.define('team', {
 
 const Board = SQL_connection.define('board', {
   title: Sequelize.STRING,
-  teamId: { type: Sequelize.INTEGER, allowNull: true, references: { model: 'teams', key: 'id' }}
+  teamId: { type: Sequelize.INTEGER, allowNull: true, references: { model: 'teams', key: 'id' }},
+  backgroundImage: { type: Sequelize.STRING, allowNull: true }
 });
 
 // Team.hasMany(Board);

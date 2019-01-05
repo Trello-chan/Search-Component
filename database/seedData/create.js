@@ -39,10 +39,14 @@ const createBoards = () => {
   for (let i = 0; i < entries; i++) {
     let board = faker.random.word();
     let randomTeamId = null;
+    let randomBackground = null;
     if (Math.random() > 0.5) {
       randomTeamId = Math.ceil(Math.random() * entries/4);
     } 
-    boards += `${board}\t${randomTeamId}\n`;
+    if (Math.random() > 0.5) {
+      randomBackground = faker.image.image();
+    } 
+    boards += `${board}\t${randomTeamId}\t${randomBackground}\n`;
   }
   boardDir.write(boards);
   console.log('ending createBoards')
