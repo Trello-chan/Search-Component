@@ -8,6 +8,7 @@ import BoardsDropdown from './BoardsDropdown';
 import BoardsDropdownDrawer from './BoardsDropdownDrawer';
 import Search from './Search/Search';
 import CreateDrawer from './CreateDrawer';
+import InfoDrawer from './InfoDrawer';
 
 class SearchService extends Component {
   constructor(props) {
@@ -66,8 +67,8 @@ class SearchService extends Component {
           {/* create button */}
           +
         </StyledButton>
-        <StyledButton>
-          {/* info button */}
+        <StyledButton onClick={() => this.changeDisplay('info')}>
+          ℹ
         </StyledButton>
         <StyledButton>
           {/* notifications button */}
@@ -76,6 +77,7 @@ class SearchService extends Component {
         </RightSideContainer>
         {displayOptions === 'boards' && <BoardsDropdownDrawer boards={boards}/>}
         {displayOptions === 'create' && <CreateDrawer />}
+        {displayOptions === 'info' && <InfoDrawer />}
       </StyledSearchComponent>
     )
   }
