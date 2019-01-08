@@ -53,16 +53,21 @@ class SearchService extends Component {
             <div>Trello-chan</div>
           </div>
         </LogoContainer>
-        {/* trello-chan logo */}
+
+        <RightSideContainer>
 
         <StyledButton>
           {/* create button */}
+          +
         </StyledButton>
         <StyledButton>
           {/* info button */}
         </StyledButton>
-        {/* notifications button */}
+        <StyledButton>
+          {/* notifications button */}
+        </StyledButton>
         {/* member logo */}
+        </RightSideContainer>
         {displayOptions && <BoardsDropdownDrawer boards={boards}/>}
       </StyledSearchComponent>
     )
@@ -81,6 +86,7 @@ const StyledSearchComponent = styled.div`
   background: rgba(0,0,0,.35);
   height: 26px;
   padding: 3px;
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -122,7 +128,20 @@ const LogoContainer = styled.div`
       font-weight: 600;
     }
   }
+`;
 
+const RightSideContainer = styled.div`
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  justify-content: flex-end;
+  width: 31%;
+  position: absolute;
+  right: 8px;
+  > :nth-child(1) {
+    font-size: 20px;
+  }
 `
 
 export default SearchService;
