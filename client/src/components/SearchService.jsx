@@ -7,6 +7,7 @@ import BoardImage from './cssImages/board';
 import BoardsDropdown from './BoardsDropdown';
 import BoardsDropdownDrawer from './BoardsDropdownDrawer';
 import Search from './Search/Search';
+import CreateDrawer from './CreateDrawer';
 
 class SearchService extends Component {
   constructor(props) {
@@ -21,8 +22,8 @@ class SearchService extends Component {
     this.fetchLoadData();
   }
 
-  changeDisplay = () => {
-    this.setState({ displayOptions: !this.state.displayOptions})
+  changeDisplay = (displayOptions) => {
+    this.setState({ displayOptions });
   }
 
   fetchLoadData = () => {
@@ -56,7 +57,7 @@ class SearchService extends Component {
 
         <RightSideContainer>
 
-        <StyledButton>
+        <StyledButton onClick={() => this.changeDisplay('create')}>
           {/* create button */}
           +
         </StyledButton>
@@ -68,7 +69,8 @@ class SearchService extends Component {
         </StyledButton>
         {/* member logo */}
         </RightSideContainer>
-        {displayOptions && <BoardsDropdownDrawer boards={boards}/>}
+        {displayOptions === 'boards' && <BoardsDropdownDrawer boards={boards}/>}
+        {displayOptions === 'create' && <CreateDrawer />}
       </StyledSearchComponent>
     )
   }

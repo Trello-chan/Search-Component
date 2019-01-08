@@ -109,7 +109,6 @@ const DrawerContainer = styled.div`
   background-color: white;
   border-radius: 0px 2px 2px 0px;
   font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-  max-height: calc(100% - 49px);
   left: 0px;
   overflow: scroll;
   padding: 5px;

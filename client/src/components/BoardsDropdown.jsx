@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BoardImage from './cssImages/board';
 
 const BoardDropdown = (props) =>
-  <StyledBoardTopContainer onClick={props.changeDisplay}>
+  <StyledBoardTopContainer onClick={() => props.changeDisplay('boards')}>
     <div><BoardImage/></div>
     <StyledBoardText>
       Boards
