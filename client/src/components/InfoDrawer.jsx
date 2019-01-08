@@ -31,6 +31,11 @@ class InfoDrawer extends Component {
     }
   }
 
+  changeLink = () => {
+    let index = Math.floor(Math.random() * this.state.messages.length);
+    this.setState({ index });
+  }
+
   render() {
     let { index, messages } = this.state;
     return (
@@ -43,9 +48,11 @@ class InfoDrawer extends Component {
         <hr/>
 
         <div>
-          <img src={messages[index].image} alt=""/>
-          <h5>{messages[index].message}</h5>
-          <div><u>Get a new tip</u></div>
+          <a href={messages[index].link} target="_blank">
+            <img src={messages[index].image} alt=""/>
+            <div><h5>{messages[index].message}</h5></div>
+          </a>
+          <div onClick={this.changeLink}><u>Get a new tip</u></div>
         </div>
 
         <hr />
@@ -76,7 +83,26 @@ const DrawerContainer = styled.div`
   right: 10px;
   top: 33px;
   width: 310px;
-  > :nth-child(n+3) {
+  > :nth-child(3) {
+      text-align: center;
+    > :nth-child(2) {
+      &:hover {
+        background-color: rgba(210,210,210,.35);
+        color: black;
+      }
+    }
+    > :nth-child(1) {
+      text-decoration: none;
+      > :nth-child(2) {
+        height: 40px;
+        &:hover {
+        background-color: rgba(210,210,210,.35);
+        color: black;
+      }
+      }
+    }
+  }
+  > :nth-child(4) {
     text-align: center;
     > :nth-child(n) {
       &:hover {
@@ -87,6 +113,7 @@ const DrawerContainer = styled.div`
   }
   > :nth-child(5) {
     margin: 10px 0px;
+    text-align: center;
     > :nth-child(n) {
       margin: 0px 10px;
     }
