@@ -22,7 +22,9 @@ class SearchService extends Component {
     this.fetchLoadData();
   }
 
-  changeDisplay = (displayOptions) => {
+  changeDisplay = (options) => {
+    let displayOptions = this.state.displayOptions === options ? false : options;
+    console.log(displayOptions)
     this.setState({ displayOptions });
   }
 
@@ -46,7 +48,10 @@ class SearchService extends Component {
 
         <BoardsDropdown changeDisplay={this.changeDisplay}/>
 
-        <Search />
+        <StyledSearchTopContainer style={{ background: displayOptions === 'search' ? 'white': 'rgba(255,255,255,.3)' }}>
+          {displayOptions !== 'search' && <div onClick={() => this.changeDisplay('search')}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
+          {displayOptions === 'search' && <Search closeDisplay={() => this.changeDisplay('search')}/>}
+        </StyledSearchTopContainer>
 
         <LogoContainer>
           <div>
@@ -146,4 +151,34 @@ const RightSideContainer = styled.div`
   }
 `
 
+const BlankSpace = styled.div`
+  cursor: text;
+  width: 118px;
+  @media screen and (max-width: 600px) {
+    width: 0px;
+  }
+  + div {
+    cursor: pointer;
+    font-size: 10px;
+  }
+`;
+
+const StyledSearchTopContainer = styled.div`
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3.5px;
+  max-width: 240px;
+  min-width: 26px;
+  height: 100%;
+  padding: 0px 5px;
+  > :nth-child(1) {
+    display: flex;
+    flex-direction: row;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 0px;
+  }
+`;
 export default SearchService;

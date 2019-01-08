@@ -10,7 +10,6 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputting: false,
       searching: false,
       doneSearching: false,
       cards: []
@@ -19,10 +18,6 @@ class Search extends Component {
 
   backToDefault = () => {
     this.setState({ doneSearching: false, cards: [] });
-  }
-
-  changeInput = () => {
-    this.setState({ inputting: !this.state.inputting });
   }
 
   findCardLabel = (label) => {
@@ -43,19 +38,16 @@ class Search extends Component {
   }
 
   render() {
-    let { cards, doneSearching, inputting, searching } = this.state;
+    let { cards, doneSearching, searching } = this.state;
+    let { closeDisplay } = this.props
     return (
-      <StyledSearchTopContainer style={{ background: inputting ? 'white': 'rgba(255,255,255,.3)' }}>
-        {!inputting && <div onClick={this.changeInput}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
-        
-        {inputting && 
+      <StyledSearchTopContainer style={{ background: 'white' }}>
           <InputContainer>
             <input type="text" onChange={this.searching}/>
             <ExpandImage />
-            <div onClick={this.changeInput}>&#215;</div>
-          </InputContainer>}
-
-        {inputting &&
+            <div onClick={closeDisplay}>&#215;</div>
+          </InputContainer>
+          
           <DrawerContainer>
             {!searching && !doneSearching && cards.length === 0 &&
               <SearchDrawerDefault />
@@ -87,23 +79,10 @@ class Search extends Component {
               </div>
             }
           </DrawerContainer>
-        }
       </StyledSearchTopContainer>
     )
   }
 }
-
-const BlankSpace = styled.div`
-  cursor: text;
-  width: 118px;
-  @media screen and (max-width: 600px) {
-    width: 0px;
-  }
-  + div {
-    cursor: pointer;
-    font-size: 10px;
-  }
-`;
 
 const InputContainer = styled.div`
   color: #6b808c;
