@@ -43,9 +43,9 @@ const DrawerContainer = styled.div`
   background: white;
   border-radius: 2px;
   position: absolute;
-  right: 5px;
-  top: 26px;
-  width: 300px;
+  right: 10px;
+  top: 33px;
+  width: 240px;
   > :nth-child(1){
     display: flex;
     flex-direction: row;
