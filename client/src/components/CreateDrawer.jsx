@@ -21,18 +21,18 @@ class CreateDrawer extends Component {
         <hr/>
 
         <div>
-          <div>Create Board...</div>
-          <div>description</div>
+          <h5>Create Board...</h5>
+          <div>A board is made up of cards ordered on lists.  Use it to manage projects, track information, or organize anything</div>
         </div>
 
         <div>
-          <div>Create Team...</div>
-          <div>description</div>
+          <h5>Create Team...</h5>
+          <div>A team is a group of boards and people. Use it to organize your company, side hustle, family, or friends.</div>
         </div>
 
         <div>
-          <div>Create Business Team...</div>
-          <div>description</div>
+          <h5>Create Business Team...</h5>
+          <div>With Business Class your team has more security, administrative controls, and unlimited Power-Ups.</div>
         </div>
       </DrawerContainer>
     )
@@ -42,17 +42,41 @@ class CreateDrawer extends Component {
 const DrawerContainer = styled.div`
   background: white;
   border-radius: 2px;
+  color: #6b808c;
+  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-size: 9.5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   position: absolute;
   right: 10px;
   top: 33px;
   width: 240px;
+  > :nth-child(n + 3) {
+    padding: 5px 10px;
+    &:hover {
+      background: #0094FF;
+      color: white;
+    }
+  }
+  & h5 {
+    color: #17394d;
+    font-size: 12px;
+    margin: 0px 0px 5px 0px;
+  }
   > :nth-child(1){
     display: flex;
     flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
     > :nth-child(1) {
+      font-size: 12px;
+      line-height: 8px;
+      margin-left: 20px;
+      text-align: center;
       width: 90%;
     }
     > :nth-child(2) {
+      text-align: end;
       width: 10%;
     }
   }
