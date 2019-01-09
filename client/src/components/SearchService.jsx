@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import HomeButton from './cssImages/home';
 import BoardImage from './cssImages/board';
-import BoardsDropdown from './BoardsDropdown';
-import BoardsDropdownDrawer from './BoardsDropdownDrawer';
+import BoardsButton from './BoardsButton';
+import BoardsButtonDrawer from './BoardsButtonDrawer';
 import Search from './Search/Search';
 import CreateDrawer from './CreateDrawer';
 import InfoDrawer from './InfoDrawer';
@@ -48,7 +48,7 @@ class SearchService extends Component {
           <HomeButton />
         </StyledButton>
 
-        <BoardsDropdown changeDisplay={this.changeDisplay}/>
+        <BoardsButton changeDisplay={this.changeDisplay}/>
 
         <StyledSearchTopContainer style={{ background: displayOptions === 'search' ? 'white': 'rgba(255,255,255,.3)' }}>
           {displayOptions !== 'search' && <div onClick={() => this.changeDisplay('search')}><BlankSpace></BlankSpace><div>&#128270;</div></div>}
@@ -76,7 +76,7 @@ class SearchService extends Component {
         </StyledButton>
         {/* member logo */}
         </RightSideContainer>
-        {displayOptions === 'boards' && <BoardsDropdownDrawer boards={boards}/>}
+        {displayOptions === 'boards' && <BoardsButtonDrawer boards={boards}/>}
         {displayOptions === 'create' && <CreateDrawer />}
         {displayOptions === 'info' && <InfoDrawer />}
         {displayOptions === 'notification' && <NotificationDrawer />}
@@ -95,8 +95,8 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledSearchComponent = styled.div`
   background: rgba(0,0,0,.35);
-  height: 26px;
-  padding: 3px;
+  height: 32px;
+  padding: 4px;
   position: relative;
   width: 100%;
   display: flex;
@@ -108,8 +108,8 @@ const StyledButton = styled.div`
   background: rgba(255,255,255,.3);
   border-radius: 3px;
   cursor: pointer;
-  height: 100%;
-  width: 26px;
+  height: 32px;
+  width: 32px;
   display: flex;
   justify-content: center;
   align-items: center;

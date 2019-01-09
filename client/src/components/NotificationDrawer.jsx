@@ -7,20 +7,22 @@ const InfoDrawer = () =>
       <div>Notifications</div>
       <div>X</div>
     </div>
+
+    <hr/>
     
-    <div>View All</div>
- 
-    <div>
-      <img src="https://a.trellocdn.com/prgb/dist/images/taco-sleep.0582d9f3bdb5060e7285.svg" alt=""/>
-      <div>No Unread Notifications</div>
-      <div>Click <u>View All</u> to view all your notifications</div>
-    </div>
+    <DrawerContent>
+      <div><u>View All</u></div>
+  
+      <div>
+        <img src="https://a.trellocdn.com/prgb/dist/images/taco-sleep.0582d9f3bdb5060e7285.svg" alt=""/>
+        <div>No Unread Notifications</div>
+        <div>Click <u>View All</u> to view all your notifications</div>
+      </div>
 
-    <div>
-      Change Notification Email Frequency
-    </div>
-
-    <hr />
+      <div>
+        <h5>Change Notification Email Frequency</h5>
+      </div>
+    </DrawerContent>
 
   </DrawerContainer>
 
@@ -54,5 +56,18 @@ const DrawerContainer = styled.div`
     }
   }
 `;
+
+const DrawerContent = styled.div`
+  & u {
+    cursor: pointer
+  }
+  > :nth-child(3) {
+    cursor: pointer;
+    & :hover {
+      background-color: rgba(210,210,210,.35);
+      color: white;
+    }
+  }
+`
 
 export default InfoDrawer;
