@@ -20,8 +20,9 @@ const StyledBoardTopContainer = styled.div`
   align-items: center;
   margin-right: 3.5px;
   max-width: 89px;
-  min-width: 26px;
-  height: 100%;
+  min-width: 32px;
+  padding: 0px 3px;
+  height: 32px;
   &:hover {
     background-color: rgba(210,210,210,.35);
   }
@@ -30,7 +31,7 @@ const StyledBoardTopContainer = styled.div`
 const StyledBoardText = styled.div`
   color: white;
   font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-  font-size: 11.3px;
+  font-size: 14px;
   font-weight: 700;
   margin-right: 4px;
   margin-bottom: 1px;

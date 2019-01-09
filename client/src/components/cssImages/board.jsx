@@ -9,8 +9,8 @@ const BoardImage = () =>
 
 const StyledBoardTopContainer = styled.div`
   display: flex;
-  height: 10px;
-  width: 10px;
+  height: 14px;
+  width: 14px;
   background-color: rgba(255,255,255,0.05);
   border: 1.5px solid white;
   border-radius: 2px;
