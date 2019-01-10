@@ -58,9 +58,9 @@ class BoardsDropdownDrawer extends Component {
               {!starredBoards && <Plus title="starredBoards" onClick={this.toggle}>+</Plus>}
             </DrawerHeaderContainer>
             {starredBoards && 
-              <div>
+              <StarAdvice>
                 Star your most important boards to keep them right at your fingertips.
-              </div>
+              </StarAdvice>
             }
           </div>
           
@@ -96,9 +96,11 @@ class BoardsDropdownDrawer extends Component {
           <div>
             Groups?
           </div>
-          <PaddedDrawerBox>Create new board...</PaddedDrawerBox>
-          <PaddedDrawerBox>Always keep this menu open.</PaddedDrawerBox>
-          <PaddedDrawerBox>See closed boards...</PaddedDrawerBox>
+          <div>
+            <PaddedDrawerBox>Create new board...</PaddedDrawerBox>
+            <PaddedDrawerBox>Always keep this menu open.</PaddedDrawerBox>
+            <PaddedDrawerBox>See closed boards...</PaddedDrawerBox>
+          </div>
         </DrawerContentContainer>
       </DrawerContainer>
     )
@@ -133,9 +135,12 @@ const DrawerInput = styled.input`
 
 const DrawerContentContainer = styled.div`
   color: #6b808c;
-  padding: 10px 0px 10px 10px;
+  padding: 10px 0px 0px 0px;
   span {
     font-weight: 400;
+  }
+  > :nth-child(n) {
+    margin-bottom: 15px;
   }
 `;
 
@@ -144,6 +149,8 @@ const DrawerHeaderContainer = styled.div`
   flex-direction: row;
   height: 25px;
   align-items: center;
+  margin-bottom: 5px;
+  padding-left: 10px;
   > :nth-child(1) {
     margin-right: 5px;
   }
@@ -160,17 +167,19 @@ const DrawerHeaderContainer = styled.div`
       background: #E8E7E4;
     }
   }
-  + div {
-    color: #838c91;
-    line-height: 1.5;
-    margin: 14px 42px 10px 16px;
-  }
 `;
+
+const StarAdvice = styled.div`
+  color: #838c91;
+  line-height: 1.5;
+  margin: 9px 42px 0px 26px;
+`
+
 
 const PaddedDrawerBox = styled.div`
   cursor: pointer;
   decoration: underline;
-  padding: 12px 0px 0px;
+  padding: 12px 0px 0px 10px;
   text-decoration: underline;
 `
 
@@ -179,8 +188,8 @@ const BoardDisplay = styled.div`
   flex-direction: row;
   margin-bottom: 3px;
   > :nth-child(1) {
-    height: 28px;
-    width: 30px;
+    height: 36px;
+    width: 36px;
   }
   > :nth-child(2) {
     align-items: center;
@@ -189,7 +198,7 @@ const BoardDisplay = styled.div`
     display: flex; 
     font-weight: 800;
     padding: 5px;
-    width: calc(100% - 26px);
+    width: calc(100% - 36px);
   }
 `;
 
