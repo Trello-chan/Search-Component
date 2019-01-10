@@ -158,8 +158,8 @@ const RightSideContainer = styled.div`
 
 const BlankSpace = styled.div`
   cursor: text;
-  width: 118px;
-  @media screen and (max-width: 600px) {
+  width: 150px;
+  @media screen and (max-width: 750px) {
     width: 0px;
   }
   + div {
@@ -174,15 +174,15 @@ const StyledSearchTopContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 3.5px;
-  max-width: 240px;
-  min-width: 26px;
+  max-width: 280px;
+  min-width: 32px;
   height: 100%;
-  padding: 0px 5px;
+  padding: 0px 5px 0px 5px;
   > :nth-child(1) {
     display: flex;
     flex-direction: row;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 750px) {
     padding: 0px;
   }
 `;

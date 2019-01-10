@@ -26,6 +26,9 @@ const StyledBoardTopContainer = styled.div`
   &:hover {
     background-color: rgba(210,210,210,.35);
   }
+  @media screen and (max-width: 750px) {
+    padding: 0px;
+  }
 `;
 
 const StyledBoardText = styled.div`
@@ -37,7 +40,7 @@ const StyledBoardText = styled.div`
   margin-bottom: 1px;
   padding: 2px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 750px) {
     display: none;
   }
 `;
