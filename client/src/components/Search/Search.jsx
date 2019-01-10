@@ -89,14 +89,14 @@ const InputContainer = styled.div`
   > :nth-child(1) {
     border-width: 0px;
     outline: none;
-    width: 230px;
+    width: 220px;
     @media screen and (max-width: 900px) {
-      width: 130px;
+      width: 120px;
     }
   }
   > :nth-child(3) {
-    font-size: 1.3em;
-    line-height: 18px;
+    font-size: 1.5em;
+    line-height: 20px;
   }
   > :nth-child(n + 2) {
     cursor: pointer;
@@ -120,15 +120,15 @@ const StyledSearchTopContainer = styled.div`
 
 const DrawerContainer = styled.div`
   background-color: #ebeef0;
-  border-radius: 2px;
+  border-radius: 5px;
   color: #6b808c;
-  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-  font-size: 11px;
-  left: 106px;
-  min-height: 125px;
+  ${'' /* font-family: Helvetica Neue,Arial,Helvetica,sans-serif; */}
+  ${'' /* font-size: 11px; */}
+  left: 133px;
+  min-height: 140px;
   position: absolute;
-  top: 34px;
-  width: 460px;
+  top: 41px;
+  width: 580px;
   padding: 10px;
 `;
 

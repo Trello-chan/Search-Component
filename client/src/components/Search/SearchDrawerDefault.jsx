@@ -17,9 +17,8 @@ const SearchDrawerDefault = (props) =>
 
 const DrawerTop = styled.div`
   > :nth-child(1) {
-    font-size: 9px;
-    font-weight: 550;
-    letter-spacing: 0.07em;
+    font-size: 12px;
+    font-weight: 500;
   }
   > :nth-child(2) {
     padding: 12px 0px 12px 7px;
@@ -29,7 +28,7 @@ const DrawerTop = styled.div`
 const DrawerBottom = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  padding: 15px 10px;
   line-height: 16px;
   > * {
     padding: 1px;

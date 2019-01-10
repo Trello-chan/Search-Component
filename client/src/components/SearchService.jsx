@@ -102,6 +102,7 @@ const StyledSearchComponent = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 14px;
+  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   align-items: center;
 `;
 
@@ -164,7 +165,7 @@ const BlankSpace = styled.div`
   }
   + div {
     cursor: pointer;
-    font-size: 10px;
+    font-size: 12px;
   }
 `;
 
