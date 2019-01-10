@@ -8,8 +8,8 @@ const Expand = () =>
   </TopContainer>
 
 const TopContainer = styled.div`
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   margin-right: 5px;
   position: relative;
   & :nth-child(1) {
@@ -18,7 +18,7 @@ const TopContainer = styled.div`
     font-weight: 900;
     height: 12px;
     position: absolute;
-    right: 0;
+    right: 3px;
     width: 10px !important;
   }
   & :nth-child(2) {

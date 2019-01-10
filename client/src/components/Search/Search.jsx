@@ -89,7 +89,10 @@ const InputContainer = styled.div`
   > :nth-child(1) {
     border-width: 0px;
     outline: none;
-    width: 180px;
+    width: 230px;
+    @media screen and (max-width: 900px) {
+      width: 130px;
+    }
   }
   > :nth-child(3) {
     font-size: 1.3em;
@@ -106,16 +109,12 @@ const StyledSearchTopContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 3.5px;
-  max-width: 240px;
-  min-width: 26px;
+  max-width: 280px;
+  min-width: 32px;
   height: 100%;
-  padding: 0px 5px;
   > :nth-child(1) {
     display: flex;
     flex-direction: row;
-  }
-  @media screen and (max-width: 600px) {
-    padding: 0px;
   }
 `;
 
