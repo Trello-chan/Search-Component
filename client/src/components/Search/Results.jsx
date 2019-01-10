@@ -5,9 +5,9 @@ const Results = ({ cards }) =>
   <div>
     {cards.length === 0 ? 
     
-      <div>
+      <Center>
         We couldn't find any cards or boards that matched your search.
-      </div>
+      </Center>
     :
       <div>
         {cards.map(card => 
@@ -30,7 +30,8 @@ const Results = ({ cards }) =>
 const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
+  padding-top: 5px;
   > :nth-child(1) {
     background: white;
     border-radius: 2px;
@@ -39,7 +40,7 @@ const CardContainer = styled.div`
     align-items: center;
     margin-right: 10px;
     padding: 5px;
-    width: 155px;
+    width: 195px;
   }
   > :nth-child(2) {
     > :nth-child(1) {
@@ -50,6 +51,13 @@ const CardContainer = styled.div`
       }
     }
   }
+`;
+
+const Center = styled.div`
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
 `
 
 export default Results;

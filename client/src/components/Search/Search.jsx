@@ -88,6 +88,7 @@ const InputContainer = styled.div`
   color: #6b808c;
   > :nth-child(1) {
     border-width: 0px;
+    font-size: 12px;
     outline: none;
     width: 220px;
     @media screen and (max-width: 900px) {
@@ -95,8 +96,8 @@ const InputContainer = styled.div`
     }
   }
   > :nth-child(3) {
-    font-size: 1.5em;
-    line-height: 20px;
+    font-size: 1.8em;
+    line-height: 15px;
   }
   > :nth-child(n + 2) {
     cursor: pointer;
@@ -122,10 +123,8 @@ const DrawerContainer = styled.div`
   background-color: #ebeef0;
   border-radius: 5px;
   color: #6b808c;
-  ${'' /* font-family: Helvetica Neue,Arial,Helvetica,sans-serif; */}
-  ${'' /* font-size: 11px; */}
   left: 133px;
-  min-height: 140px;
+  min-height: 100px;
   position: absolute;
   top: 41px;
   width: 580px;
@@ -141,6 +140,7 @@ const ResultNav = styled.div`
     height: 20px;
   }
   > :nth-child(1) {
+    font-size: 12px;
     width: 45%;
   }
   > :nth-child(2) {
