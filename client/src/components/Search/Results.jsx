@@ -33,8 +33,9 @@ const CardContainer = styled.div`
   padding-bottom: 15px;
   padding-top: 5px;
   > :nth-child(1) {
-    background: white;
-    border-radius: 2px;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(247,247,247,1) 73%,rgba(242,242,242,1) 100%);
+    border-radius: 3px;
+    border-bottom: 1px solid #DDDDDD;
     color: #17394d;
     display: flex;
     align-items: center;
