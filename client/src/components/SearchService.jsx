@@ -101,6 +101,7 @@ const StyledSearchComponent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  font-size: 14px;
   align-items: center;
 `;
 
