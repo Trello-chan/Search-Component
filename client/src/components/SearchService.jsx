@@ -69,9 +69,9 @@ class SearchService extends Component {
           {/* member logo */}
         </RightSideContainer>
         {displayOptions === 'boards' && <BoardsButtonDrawer boards={boards}/>}
-        {displayOptions === 'create' && <CreateDrawer closeDisplay={() => this.changeDisplay('create')}/>}
-        {displayOptions === 'info' && <InfoDrawer />}
-        {displayOptions === 'notification' && <NotificationDrawer />}
+        {displayOptions === 'create' && <CreateDrawer closeDisplay={() => this.changeDisplay(displayOptions)}/>}
+        {displayOptions === 'info' && <InfoDrawer closeDisplay={() => this.changeDisplay(displayOptions)}/>}
+        {displayOptions === 'notification' && <NotificationDrawer closeDisplay={() => this.changeDisplay(displayOptions)}/>}
       </StyledSearchComponent>
     )
   }
@@ -96,6 +96,11 @@ const StyledSearchComponent = styled.div`
   font-size: 14px;
   font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   align-items: center;
+  & hr {
+    border-color: rgba(9,45,66,.13);
+    border-width: .5px;
+    margin: 7px 10px;
+  }
 `;
 
 const StyledButton = styled.div`
@@ -147,6 +152,11 @@ const RightSideContainer = styled.div`
   > :nth-child(1) {
     font-size: 25px;
     font-weight: 300;
+  }
+  > :nth-child(2) {
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
   }
 `
 

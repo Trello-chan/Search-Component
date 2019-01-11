@@ -23,7 +23,7 @@ const DrawerTop = styled.div`
   > :nth-child(2) {
     padding: 12px 0px 12px 7px;
   }
-`
+`;
 
 const DrawerBottom = styled.div`
   display: flex;

@@ -38,11 +38,12 @@ class InfoDrawer extends Component {
 
   render() {
     let { index, messages } = this.state;
+    let { closeDisplay } = this.props;
     return (
       <DrawerContainer>
         <div>
           <div>Information</div>
-          <div>&#215;</div>
+          <div onClick={closeDisplay}>&#215;</div>
         </div>
         
         <hr/>
@@ -81,15 +82,6 @@ const DrawerContainer = styled.div`
   right: 13px;
   top: 41px;
   width: 360px;
-  > :nth-child(4) {
-    text-align: center;
-    > :nth-child(n) {
-      &:hover {
-        background-color: rgba(210,210,210,.35);
-        color: black;
-      }
-    }
-  }
   > :nth-child(1){
     display: flex;
     flex-direction: row;
@@ -107,6 +99,15 @@ const DrawerContainer = styled.div`
       width: 10%;
       &:hover { 
         cursor: pointer;
+      }
+    }
+  }
+  > :nth-child(4) {
+    text-align: center;
+    > :nth-child(n) {
+      &:hover {
+        background-color: rgba(210,210,210,.35);
+        color: black;
       }
     }
   }
