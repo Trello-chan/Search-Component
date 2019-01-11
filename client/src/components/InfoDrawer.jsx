@@ -42,29 +42,29 @@ class InfoDrawer extends Component {
       <DrawerContainer>
         <div>
           <div>Information</div>
-          <div>X</div>
+          <div>&#215;</div>
         </div>
         
         <hr/>
 
-        <div>
+        <Tips>
           <a href={messages[index].link} target="_blank">
             <img src={messages[index].image} alt=""/>
-            <div><h5>{messages[index].message}</h5></div>
+            <div><h3>{messages[index].message}</h3></div>
           </a>
           <div onClick={this.changeLink}><u>Get a new tip</u></div>
-        </div>
+        </Tips>
 
         <hr />
 
-        <div>
+        <FooterLinks>
           <a href="https://trello.com/tour">Tour</a>
           <a href="https://trello.com/pricing">Pricing</a>
           <a href="https://trello.com/platforms">Apps</a>
           <a href="https://blog.trello.com/">Blog</a>
           <a href="https://trello.com/privacy">Privacy</a>
           <a href="https://trello.com/b/DgEjhZsw/trello">More...</a>
-        </div>
+        </FooterLinks>
       </DrawerContainer>
     )
   }
@@ -74,34 +74,13 @@ const DrawerContainer = styled.div`
   background: white;
   border-radius: 2px;
   color: #6b808c;
-  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-  font-size: 9.5px;
-  height: 270px;
+  height: 350px;
   padding-top: 10px;
   padding-bottom: 10px;
   position: absolute;
-  right: 10px;
-  top: 33px;
-  width: 310px;
-  > :nth-child(3) {
-      text-align: center;
-    > :nth-child(2) {
-      &:hover {
-        background-color: rgba(210,210,210,.35);
-        color: black;
-      }
-    }
-    > :nth-child(1) {
-      text-decoration: none;
-      > :nth-child(2) {
-        height: 40px;
-        &:hover {
-        background-color: rgba(210,210,210,.35);
-        color: black;
-      }
-      }
-    }
-  }
+  right: 13px;
+  top: 41px;
+  width: 360px;
   > :nth-child(4) {
     text-align: center;
     > :nth-child(n) {
@@ -111,34 +90,76 @@ const DrawerContainer = styled.div`
       }
     }
   }
-  > :nth-child(5) {
-    margin: 10px 0px;
-    text-align: center;
-    > :nth-child(n) {
-      margin: 0px 10px;
-    }
-  }
-  & h5 {
-    color: #17394d;
-    font-size: 14px;
-    margin: 5px 0px 5px 0px;
-  }
   > :nth-child(1){
     display: flex;
     flex-direction: row;
-    padding: 0px 10px 5px 10px;
+    padding: 5px 10px;
     > :nth-child(1) {
-      font-size: 12px;
-      line-height: 8px;
       margin-left: 20px;
       text-align: center;
       width: 90%;
     }
     > :nth-child(2) {
+      font-size: 20px;
+      line-height: 12px;
+      font-weight: 300;
       text-align: end;
       width: 10%;
+      &:hover { 
+        cursor: pointer;
+      }
     }
   }
 `;
+
+const Tips = styled.div`
+ text-align: center;
+  & h3 {
+    color: #17394d;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  > :nth-child(1) {
+    text-decoration: none;
+    > img { 
+      border-radius: 5px;
+      width: 95%;
+    }
+    > :nth-child(n) {
+      min-height: 60px;
+      &:hover {
+        background-color: rgba(210,210,210,.35);
+        color: black;
+      }
+    }
+  }
+  > :nth-child(2) {
+    padding: 5px;
+    &:hover {
+      background-color: rgba(210,210,210,.35);
+      color: black;
+      cursor: pointer;
+    }
+  }
+`;
+
+
+const FooterLinks = styled.div`
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & a {
+    color: #6b808c;
+  }
+  > :nth-child(n) {
+    border-radius: 5px;
+    padding: 8px;
+    &:hover {
+      background-color: rgba(210,210,210,.35);
+      color: black;
+    }
+  }
+`
 
 export default InfoDrawer;
