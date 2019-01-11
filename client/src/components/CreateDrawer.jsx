@@ -11,29 +11,30 @@ class CreateDrawer extends Component {
   }
 
   render() {
+    let { closeDisplay } = this.props;
     return (
       <DrawerContainer>
         <div>
           <div>Create</div>
-          <div>X</div>
+          <div onClick={closeDisplay}>&#215;</div>
         </div>
         
         <hr/>
 
-        <div>
-          <h5>Create Board...</h5>
+        <ActionContainer>
+          <h4>Create Board...</h4>
           <div>A board is made up of cards ordered on lists.  Use it to manage projects, track information, or organize anything</div>
-        </div>
+        </ActionContainer>
 
-        <div>
-          <h5>Create Team...</h5>
+        <ActionContainer>
+          <h4>Create Team...</h4>
           <div>A team is a group of boards and people. Use it to organize your company, side hustle, family, or friends.</div>
-        </div>
+        </ActionContainer>
 
-        <div>
-          <h5>Create Business Team...</h5>
+        <ActionContainer>
+          <h4>Create Business Team...</h4>
           <div>With Business Class your team has more security, administrative controls, and unlimited Power-Ups.</div>
-        </div>
+        </ActionContainer>
       </DrawerContainer>
     )
   }
@@ -43,43 +44,47 @@ const DrawerContainer = styled.div`
   background: white;
   border-radius: 2px;
   color: #6b808c;
-  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-  font-size: 9.5px;
   padding-top: 10px;
   padding-bottom: 10px;
   position: absolute;
-  right: 10px;
-  top: 33px;
-  width: 240px;
-  > :nth-child(n + 3) {
-    padding: 5px 10px;
-    &:hover {
-      background: #0094FF;
-      color: white;
-    }
-  }
-  & h5 {
-    color: #17394d;
-    font-size: 12px;
-    margin: 0px 0px 5px 0px;
-  }
+  right: 13px;
+  top: 41px;
+  width: 305px;
   > :nth-child(1){
     display: flex;
     flex-direction: row;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px;
     > :nth-child(1) {
-      font-size: 12px;
-      line-height: 8px;
       margin-left: 20px;
       text-align: center;
       width: 90%;
     }
     > :nth-child(2) {
+      font-size: 20px;
+      line-height: 12px;
+      font-weight: 300;
       text-align: end;
       width: 10%;
+      &:hover { 
+        cursor: pointer;
+      }
     }
   }
 `;
+
+const ActionContainer = styled.div`
+  padding: 5px 10px 10px;
+  &:hover {
+    background: #3F7FBF;
+    color: white !important;
+  }
+  & h4 {
+    color: #17394d;
+    margin: 0px 0px 5px 0px;
+  }
+  > :nth-child(2) {
+    font-size: 12px;
+  }
+`
 
 export default CreateDrawer;

@@ -63,21 +63,13 @@ class SearchService extends Component {
         </LogoContainer>
 
         <RightSideContainer>
-
-        <StyledButton onClick={() => this.changeDisplay('create')}>
-          {/* create button */}
-          +
-        </StyledButton>
-        <StyledButton onClick={() => this.changeDisplay('info')}>
-          ℹ
-        </StyledButton>
-        <StyledButton onClick={() => this.changeDisplay('notification')}>
-          &#128276;
-        </StyledButton>
-        {/* member logo */}
+          <StyledButton onClick={() => this.changeDisplay('create')}>+</StyledButton>
+          <StyledButton onClick={() => this.changeDisplay('info')}>ℹ</StyledButton>
+          <StyledButton onClick={() => this.changeDisplay('notification')}>&#128276;</StyledButton>
+          {/* member logo */}
         </RightSideContainer>
         {displayOptions === 'boards' && <BoardsButtonDrawer boards={boards}/>}
-        {displayOptions === 'create' && <CreateDrawer />}
+        {displayOptions === 'create' && <CreateDrawer closeDisplay={() => this.changeDisplay('create')}/>}
         {displayOptions === 'info' && <InfoDrawer />}
         {displayOptions === 'notification' && <NotificationDrawer />}
       </StyledSearchComponent>
@@ -153,7 +145,8 @@ const RightSideContainer = styled.div`
   position: absolute;
   right: 8px;
   > :nth-child(1) {
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 300;
   }
 `
 
