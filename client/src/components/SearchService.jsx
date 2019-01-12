@@ -10,6 +10,7 @@ import Search from './Search/Search';
 import CreateDrawer from './CreateDrawer';
 import InfoDrawer from './InfoDrawer';
 import NotificationDrawer from './NotificationDrawer';
+import UserButton from './UserButton';
 
 class SearchService extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class SearchService extends Component {
 
   render() {
     let { displayOptions } = this.state;
-    let { boards } = this.state.userData;
+    let { boards, member } = this.state.userData;
     return (
       <StyledSearchComponent>
         <GlobalStyle />
@@ -66,6 +67,7 @@ class SearchService extends Component {
           <StyledButton onClick={() => this.changeDisplay('create')}>+</StyledButton>
           <StyledButton onClick={() => this.changeDisplay('info')}>ℹ</StyledButton>
           <StyledButton onClick={() => this.changeDisplay('notification')}>&#128276;</StyledButton>
+          {member && <UserButton member={member}/>}
           {/* member logo */}
         </RightSideContainer>
         {displayOptions === 'boards' && <BoardsButtonDrawer boards={boards}/>}
@@ -190,4 +192,5 @@ const StyledSearchTopContainer = styled.div`
     padding: 0px;
   }
 `;
+
 export default SearchService;
