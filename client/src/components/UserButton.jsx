@@ -19,7 +19,6 @@ const MemberContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
-`
-
+`;
 
 export default UserButton;

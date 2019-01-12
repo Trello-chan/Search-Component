@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import HomeButton from './cssImages/home';
 import BoardImage from './cssImages/board';
-import BoardsButton from './BoardsButton';
-import BoardsButtonDrawer from './BoardsButtonDrawer';
+import BoardsButton from './Boards/BoardsButton';
+import BoardsButtonDrawer from './Boards/BoardsButtonDrawer';
 import Search from './Search/Search';
 import CreateDrawer from './CreateDrawer';
 import InfoDrawer from './InfoDrawer';
@@ -27,7 +27,6 @@ class SearchService extends Component {
 
   changeDisplay = (options) => {
     let displayOptions = this.state.displayOptions === options ? false : options;
-    console.log(displayOptions)
     this.setState({ displayOptions });
   }
 
