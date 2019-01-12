@@ -12,19 +12,27 @@ const getRandom50CardsHelper = () => Card.findAll({ order: SQL_connection.random
 
 const createBoardHelper = title => Board.create({ title });
 
-const getBoardHelper = title => Board.findOne({ where: { title }});
+const getBoardHelper = title => 
+  Board.findAll({ 
+    where: { 
+      title: { [Sequelize.Op.iLike]: `%${title}%` }
+    },
+    limit: 10
+  });
 
 const createTeamHelper = teamname => Team.create({ teamname });
 
+//We'll also need userId to first confirm it there's an association
+//wouldn't want everyone to get your cards
 const getCardHelper = label => 
   Card.findAll({
     where: {
-      label: { [Sequelize.Op.like]: `%${label}%` }
+      label: { [Sequelize.Op.iLike]: `%${label}%` }
     },
     include: [{
       model: Member
     }],
-    limit: 5
+    limit: 6
   }); 
 
   // select c.*, m.* from cards c inner join card_members cm on c.id = cm."cardId" inner join members m on m.id = cm."memberId" where c.label like '%__INSERT QUERY__%' order by random() limit 10;
