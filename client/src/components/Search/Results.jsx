@@ -9,9 +9,7 @@ class Results extends Component {
     }
   }
 
-  //if null, all cards show normally
-  //if not null and card is not the state card.id, then it should be smaller
-  hoveringOverCard = (hoverOveringID) => this.setState({ hoverOveringID }, () => console.log(this.state));
+  hoveringOverCard = hoverOveringID => this.setState({ hoverOveringID });
 
   render() {
     let { hoverOveringID } = this.state;
@@ -30,7 +28,7 @@ class Results extends Component {
               <div 
                 onMouseEnter={() => this.hoveringOverCard(card.id)} 
                 onMouseLeave={() => this.hoveringOverCard(null)}
-                >
+                style={hoverOveringID === null || hoverOveringID === card.id ? {} : { transform: 'scale(0.8)', opacity: 0.4 }}>
                 {card.label}
               </div>
               <div>
