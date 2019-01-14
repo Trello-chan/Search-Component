@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Card from '../Card/Card';
+
 class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hoverOveringID: null
+      hoverOveringID: null,
+      currentCard: null,
+      showOverlay: false
     }
   }
+
+  handleCardClick = (currentCard) => this.setState({ currentCard, showOverlay: !this.state.showOverlay });
 
   hoveringOverCard = hoverOveringID => this.setState({ hoverOveringID });
 
   render() {
-    let { hoverOveringID } = this.state;
+    let { hoverOveringID, currentCard, showOverlay } = this.state;
     let { cards } = this.props;
     return (
     <div>
@@ -26,19 +32,21 @@ class Results extends Component {
           {cards.map(card => 
             <CardContainer key={card.id}>
               <div 
+                onClick={() => this.handleCardClick(card)}
                 onMouseEnter={() => this.hoveringOverCard(card.id)} 
                 onMouseLeave={() => this.hoveringOverCard(null)}
                 style={hoverOveringID === null || hoverOveringID === card.id ? {} : { transform: 'scale(0.8)', opacity: 0.4 }}>
                 {card.label}
               </div>
               <div>
-                <div><b>{card.label}</b></div>
+                <div onClick={() => this.handleCardClick(card)}><b>{card.label}</b></div>
                 <div>in <b>{card.list}</b> on <b>{card.boardId}</b></div>
               </div>
             </CardContainer>
           )}
         </div>
       }
+      {showOverlay && <Card card={currentCard} handleCardClick={this.handleCardClick}/>}
     </div>
     )
   }
