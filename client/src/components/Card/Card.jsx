@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Actions from './Actions';
+import Add from './Add';
+import Detail from './Detail';
+
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +18,12 @@ class Card extends Component {
     return (
       <ModalOverlay onClick={() => handleCardClick(card)}>
         <CardDisplay>
+          <Detail />
           {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
+          <div>
+            <Actions />
+            <Add />
+          </div>
         </CardDisplay>
       </ModalOverlay>
     )
@@ -40,6 +49,8 @@ const CardDisplay = styled.div`
   border-radius: 2px;
   height: 650px;
   width: 760px;
+  display: flex;
+  flex-direction: row;
   ${'' /* when screen is < 750px, width changes to possibly to flex screen width */}
 `;
 
