@@ -120,7 +120,8 @@ const StyledButton = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  width: 35%;
+  position: absolute;
+  margin-left: 50%;
   > :nth-child(1) {
     display: flex;
     flex-direction: row;
