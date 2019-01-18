@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import CardImage from '../cssImages/cards';
 import TextAlignImage from '../cssImages/textAlign';
+// import SpeechBubbleImage from '../cssImages/speechBubble';
 
 class Detail extends Component {
   constructor(props) {
@@ -27,13 +28,17 @@ class Detail extends Component {
         <div>
           <TextAlignImage />
           <div>
-            <div>Description <div>Edit{/*if there's a description*/}</div> </div>
-            <div>Add a more detailed description</div> {/* if there's no description */}
-            <div></div>{/* if there's a description */}
+            <div>Description {card.description && <span><u>Edit</u></span>}</div>
+            {card.description ? 
+              <div>{card.description}</div>
+              :
+              <div>Add a more detailed description</div>
+            }
             {showDescription && <textarea/>}
           </div>
         </div>
         <div>
+          <CardImage />
           Comment
         </div>
         <div>
