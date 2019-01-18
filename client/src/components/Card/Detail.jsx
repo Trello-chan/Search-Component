@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CardImage from '../cssImages/cards';
 import TextAlignImage from '../cssImages/textAlign';
 // import SpeechBubbleImage from '../cssImages/speechBubble';
+import ActivityImage from '../cssImages/activity';
 
 class Detail extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class Detail extends Component {
           Comment
         </div>
         <div>
+          <ActivityImage />
           Activity
         </div>
       </DetailContainer>
