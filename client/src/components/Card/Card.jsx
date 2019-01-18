@@ -18,7 +18,7 @@ class Card extends Component {
     return (
       <ModalOverlay onClick={() => handleCardClick(card)}>
         <CardDisplay>
-          <Detail />
+          <Detail card={card}/>
           {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
           <div>
             <Actions />
