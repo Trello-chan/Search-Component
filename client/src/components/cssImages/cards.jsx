@@ -30,7 +30,7 @@ const StyledCardImage = styled.div`
       height: 30%;
       > :nth-child(1) {
         border-left: 2px solid #798d99;
-        width: 10%;
+        width: 15%;
       }
     }
   }
