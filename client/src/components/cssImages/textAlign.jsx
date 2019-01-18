@@ -22,6 +22,15 @@ const TextAlignContainer = styled.div`
 const Lines = styled.div`
   height: 16px;
   width: 16px;
+
+  & hr {
+    border-color: rgba(121,141,153,0.7);
+    border-width: 1px;
+    margin: 2px 0px;
+  }
+  > :nth-child(4) {
+    margin-right: 6px;
+  }
 `
 
 export default TextAlignImage;

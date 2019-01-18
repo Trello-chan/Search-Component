@@ -23,6 +23,11 @@ const DrawerTop = styled.div`
   > :nth-child(2) {
     padding: 12px 0px 12px 7px;
   }
+  + hr {
+    border-color: rgba(9,45,66,.13);
+    border-width: .5px;
+    margin: 7px 0px;
+  }
 `;
 
 const DrawerBottom = styled.div`

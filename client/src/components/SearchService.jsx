@@ -97,11 +97,6 @@ const StyledSearchComponent = styled.div`
   font-size: 14px;
   font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   align-items: center;
-  & hr {
-    border-color: rgba(9,45,66,.13);
-    border-width: .5px;
-    margin: 7px 10px;
-  }
 `;
 
 const StyledButton = styled.div`
@@ -158,6 +153,13 @@ const RightSideContainer = styled.div`
   > :nth-child(2) {
     @media screen and (max-width: 750px) {
       display: none;
+    }
+  }
+  + div {
+    & hr {
+      border-color: rgba(9,45,66,.13);
+      border-width: .5px;
+      margin: 7px 10px;
     }
   }
 `
