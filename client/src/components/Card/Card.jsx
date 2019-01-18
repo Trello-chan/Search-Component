@@ -31,7 +31,6 @@ class Card extends Component {
 }
 
 const ModalOverlay = styled.div`
-  align-items: center;
   background-color: rgba(0,0,0,.64);
   display: flex;
   height: 100vh; 
@@ -51,7 +50,12 @@ const CardDisplay = styled.div`
   width: 760px;
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: 45px;
   ${'' /* when screen is < 750px, width changes to possibly to flex screen width */}
+  @media screen and (max-width: 750px) {
+    width: 400px;
+  }
 `;
 
 const CardContainer = styled.div`
