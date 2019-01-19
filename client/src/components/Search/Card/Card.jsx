@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Actions from './Actions';
 import Add from './Add';
 import Detail from './Detail';
-import CardImage from '../cssImages/cards';
+import CardImage from '../../cssImages/cards';
 
 class Card extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Card extends Component {
   render() {
     let { card, handleCardClick } = this.props;
     return (
-      <ModalOverlay onClick={() => handleCardClick(card)}>
+      <ModalOverlay onClick={() => handleCardClick(null)}>
         <CardDisplay onClick={(e) => e.stopPropagation()}>
           <CardHeader>
             <CardImage />
@@ -25,7 +25,7 @@ class Card extends Component {
               <CardHeaderTextArea>{card.label}</CardHeaderTextArea>
               <div>in list <u>{card.boardId}</u></div>
             </div>
-            <div>&#215;</div>
+            <div onClick={() => handleCardClick(null)}>&#215;</div>
           </CardHeader>
           <div>
             <Detail card={card}/>
@@ -84,15 +84,35 @@ const CardHeader = styled.div`
     width: 95%;
   }
   >:nth-child(3) {
-    line-height: 5px;
     font-size: 35px;
     font-weight: 300;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      background-color: grey;
+    }
   }
 `;
 
 const CardHeaderTextArea = styled.textarea`
   background-color: #ebeef0;
+  border-radius: 3px;
   border-width: 0px;
+  color: #17394d;
+  font-size: 20px;
+  font-weight: 700;
+  height: 30px;
+  line-height: 30px;
   resize: none;
+  width: 98%;
+  &:focus {
+    box-shadow: inset 0 0 0 2px #0079bf;
+    outline: none;
+  }
 `;
 export default Card;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Card from '../Card/Card';
+import Card from './Card/Card';
 
 class Results extends Component {
   constructor(props) {

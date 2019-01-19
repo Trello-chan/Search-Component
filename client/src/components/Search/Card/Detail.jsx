@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import CardImage from '../cssImages/cards';
-import TextAlignImage from '../cssImages/textAlign';
-// import SpeechBubbleImage from '../cssImages/speechBubble';
-import ActivityImage from '../cssImages/activity';
+import CardImage from '../../cssImages/cards';
+import TextAlignImage from '../../cssImages/textAlign';
+// import SpeechBubbleImage from '../../cssImages/speechBubble';
+import ActivityImage from '../../cssImages/activity';
 
 class Detail extends Component {
   constructor(props) {
