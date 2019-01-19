@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Actions from './Actions';
 import Add from './Add';
 import Detail from './Detail';
+import CardImage from '../cssImages/cards';
 
 class Card extends Component {
   constructor(props) {
@@ -17,12 +18,22 @@ class Card extends Component {
     let { card, handleCardClick } = this.props;
     return (
       <ModalOverlay onClick={() => handleCardClick(card)}>
-        <CardDisplay>
-          <Detail card={card}/>
-          {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
+        <CardDisplay onClick={(e) => e.stopPropagation()}>
+          <CardHeader>
+            <CardImage />
+            <div>
+              <CardHeaderTextArea>{card.label}</CardHeaderTextArea>
+              <div>in list <u>{card.boardId}</u></div>
+            </div>
+            <div>&#215;</div>
+          </CardHeader>
           <div>
-            <Actions />
-            <Add />
+            <Detail card={card}/>
+            {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
+            <div>
+              <Actions />
+              <Add />
+            </div>
           </div>
         </CardDisplay>
       </ModalOverlay>
@@ -47,19 +58,41 @@ const CardDisplay = styled.div`
   background-color: #ebeef0; 
   border-radius: 2px;
   height: 650px;
-  width: 760px;
-  display: flex;
-  flex-direction: row;
+  padding: 16px;
   position: absolute;
+  width: 730px;
   top: 45px;
+
   ${'' /* when screen is < 750px, width changes to possibly to flex screen width */}
+
+  >:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+  }
   @media screen and (max-width: 750px) {
     width: 400px;
   }
 `;
 
-const CardContainer = styled.div`
+const CardHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  >:nth-child(1) {
 
+  }
+  >:nth-child(2) {
+    width: 95%;
+  }
+  >:nth-child(3) {
+    line-height: 5px;
+    font-size: 35px;
+    font-weight: 300;
+  }
 `;
 
+const CardHeaderTextArea = styled.textarea`
+  background-color: #ebeef0;
+  border-width: 0px;
+  resize: none;
+`;
 export default Card;

@@ -19,13 +19,7 @@ class Detail extends Component {
     let { card } = this.props;
     return (
       <DetailContainer>
-        <div>
-          <CardImage />
-          <div>
-            <div>{card.label}</div>
-            <div>in list <u>{card.boardId}</u></div>
-          </div>
-        </div>
+
         <div>
           <TextAlignImage />
           <div>
