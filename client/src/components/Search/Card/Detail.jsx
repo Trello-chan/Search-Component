@@ -22,15 +22,15 @@ class Detail extends Component {
 
         <div>
           <TextAlignImage />
-          <div>
-            <div>Description {card.description && <span><u>Edit</u></span>}</div>
+          <DescriptionBox>
+            <div><h3>Description</h3> {card.description && <span><u>Edit</u></span>}</div>
             {card.description ? 
               <div>{card.description}</div>
               :
               <div>Add a more detailed description</div>
             }
             {showDescription && <textarea/>}
-          </div>
+          </DescriptionBox>
         </div>
         <div>
           <CardImage />
@@ -50,7 +50,18 @@ const DetailContainer = styled.div`
   >:nth-child(n) {
     display: flex;
     flex-direction: row;
+    padding: 10px 0px;
   }
+  & h3 {
+    color: #17394d;
+    display: inline;
+    margin: 0px;
+  }
+`;
+
+const DescriptionBox = styled.div`
+  padding-left: 10px;
+  padding-top: 5px;
 `
 
 export default Detail;

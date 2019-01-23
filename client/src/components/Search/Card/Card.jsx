@@ -77,24 +77,25 @@ const CardDisplay = styled.div`
 const CardHeader = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: 10px;
   >:nth-child(1) {
 
   }
   >:nth-child(2) {
+    padding-left: 10px;
     width: 95%;
   }
   >:nth-child(3) {
     font-size: 35px;
     font-weight: 300;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 40px;
+    line-height: 32px;
+    text-align: center;
+    width: 40px;
     &:hover {
       cursor: pointer;
-      background-color: grey;
+      background-color: #D1D1D1;
     }
   }
 `;
