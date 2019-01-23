@@ -8,6 +8,7 @@ const teamDir = fs.createWriteStream(relativePath + 'teams.csv');
 const boardDir = fs.createWriteStream(relativePath + 'boards.csv');
 const cardDir = fs.createWriteStream(relativePath + 'cards.csv');
 const cardMemberDir = fs.createWriteStream(relativePath + 'cardMembers.csv');
+const cardMemberDir = fs.createWriteStream(relativePath + 'memberBoard.csv');
 
 const entries = 100;
 
@@ -67,20 +68,40 @@ const createCards = () => {
   console.log('ending createCards')
 }
 
-const createCardMemberAssociation = () => {
-  //card_id
-  //member_id
-  console.log('starting createCardMember')
-  let cardMember = '';
-  for (let i = 1; i < (entries*2) + 1; i++) {
-    if (Math.random() > 0.5) {
-      let memberId = Math.ceil(Math.random() * entries);
-      cardMember += `${i}\t${memberId}\n`;
-    } 
-  }
-  cardMemberDir.write(cardMember);
-  console.log('ending createCardMember')
-}
+// const createCardMemberAssociation = () => {
+//   //card_id
+//   //member_id
+//   console.log('starting createCardMember')
+//   let cardMember = '';
+//   for (let i = 1; i < (entries*2) + 1; i++) {
+//     if (Math.random() > 0.5) {
+//       let memberId = Math.ceil(Math.random() * entries);
+//       cardMember += `${i}\t${memberId}\n`;
+//     } 
+//   }
+//   cardMemberDir.write(cardMember);
+//   console.log('ending createCardMember')
+// }
+
+//we'll need this later
+// const createMemberBoardAssociation = () => {
+//   //board_id
+//   //member_id
+//   console.log('starting createMemberBoardAssociation');
+//   let memberBoard = '';
+//   for (let i = 1; i < (entries + 1); i++) {
+//     let numMembers = Math.ceil(Math.random() * 4);
+
+//     while (numMembers > 0) {
+//       let memberId = Math.ceil(Math.random() * entries);
+//       numMembers -= 1;
+//       memberBoard += `${i}\t${memberId}\n`;
+//     }
+
+//   }
+//   memberBoardDir.write(memberBoard);
+//   console.log('ending createMemberBoardAssociation');
+// }
 
 const createSeedData = () => {
   createUsers();
