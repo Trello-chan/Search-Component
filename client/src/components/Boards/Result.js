@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+const styled = window.styled;
 
 const Results = ({ board }) =>
   <ResultsDisplay key={board.id} style={ board.backgroundImage ? { backgroundImage: `url(${board.backgroundImage})`} : { background: randomColor()}}>

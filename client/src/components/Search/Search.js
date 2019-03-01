@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+const styled = window.styled;
 import axios from 'axios';
 
 import ExpandImage from '../cssImages/expand';

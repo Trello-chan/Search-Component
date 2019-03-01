@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+const styled = window.styled;
 
 class CreateDrawer extends Component {
   constructor(props) {

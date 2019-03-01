@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+// import styled from 'styled-components';
+const styled = window.styled;
 import axios from 'axios';
 
 import HomeButton from './cssImages/home';
@@ -78,7 +79,7 @@ class SearchService extends Component {
   }
 }
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = styled.createGlobalStyle`
   body {
     background: blue;
     height: 100vh;
