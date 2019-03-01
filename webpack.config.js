@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: ['@babel/polyfill', path.join(__dirname, './client/src/index.jsx')],
+  entry: ['@babel/polyfill', path.join(__dirname, './client/src/index.js')],
   output: {
     path: path.resolve(__dirname, './client/dist'),
     filename: 'bundle.js',
@@ -37,7 +37,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    port: 3006, // Defaults to 8080
+    port: 3008, // Defaults to 8080
     contentBase: path.resolve(__dirname, './client/dist'),
     watchContentBase: true,
     proxy: {
