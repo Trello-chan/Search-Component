@@ -1,21 +1,27 @@
 import Sequelize from 'sequelize';
 
-const SQL_connection = new Sequelize('trello_search', process.env.USERNAME || 'root', process.env.PW || '', {
-  host: process.env.host || 'localhost',
-  dialect: 'postgres',
-  operatorsAliases: false,
-  logging: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-    handleDisconnects: true,
-  },
-  define: {
-    timestamps: false
-  }
-})
+let SQL_connection;
+
+if (process.env.DATABASE) {
+  SQL_connection = new Sequelize(process.env.DATABASE);
+} else {
+  SQL_connection = new Sequelize('trello_search', process.env.USERNAME || 'root', process.env.PW || '', {
+    host: process.env.host || 'localhost',
+    dialect: 'postgres',
+    operatorsAliases: false,
+    logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+      handleDisconnects: true,
+    },
+    define: {
+      timestamps: false
+    }
+  })
+}
 
 SQL_connection
   .authenticate()
