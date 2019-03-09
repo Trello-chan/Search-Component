@@ -8,7 +8,8 @@
     "build:server": "webpack-dev-server --hot --inline",
     "seed": "node database/seedData/bin/seedEntry.js",
     "create": "node database/seedData/bin/createEntry.js",
-    "start": "nodemon server/entry.js --ignore 'client/'",
+    "start": "node server/entry.js ",
+    "start:nodemon": "nodemon server/entry.js --ignore 'client/'",
     "test": "NODE_ENV=jest jest --detectOpenHandles --forceExit"
   },
   "repository": {
