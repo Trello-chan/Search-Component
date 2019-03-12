@@ -5,3 +5,4 @@ database/seedData/data/
 yarn-error.log
 .aws.json
 .env
+.config.js
