@@ -40,11 +40,11 @@ const seedData = async () => {
       await console.log('copied members');
       await SQL_connection.query(`COPY teams ("teamname") FROM '${path.join(__dirname, '/data/teams.csv')}' CSV`);
       await console.log('copied teams');
-      await SQL_connection.query(`COPY boards ("title", "teamId", "backgroundImage") FROM '${path.join(__dirname, './data/boards.csv')}' DELIMITER '\t' NULL AS 'null' CSV`);
+      await SQL_connection.query(`COPY boards ("title", "team_id", "background_image") FROM '${path.join(__dirname, './data/boards.csv')}' DELIMITER '\t' NULL AS 'null' CSV`);
       await console.log('copied boards')
-      await SQL_connection.query(`COPY cards ("label", "description", "comment", "list", "boardId") FROM '${path.join(__dirname, './data/cards.csv')}' DELIMITER '\t' CSV`);
+      await SQL_connection.query(`COPY cards ("label", "description", "comment", "list", "board_id") FROM '${path.join(__dirname, './data/cards.csv')}' DELIMITER '\t' CSV`);
       await console.log('copied cards');
-      await SQL_connection.query(`COPY card_members ("cardId", "memberId") FROM '${path.join(__dirname, './data/cardMembers.csv')}' DELIMITER '\t' CSV`);
+      await SQL_connection.query(`COPY card_members ("card_id", "member_id") FROM '${path.join(__dirname, './data/cardMembers.csv')}' DELIMITER '\t' CSV`);
       let end = new Date();
       await console.log(`seeding data took ${Math.floor(((end - start)/1000)/60)} minutes`);
       await process.exit();

@@ -11,8 +11,8 @@ const Team = SQL_connection.define('team', {
 
 const Board = SQL_connection.define('board', {
   title: Sequelize.STRING,
-  teamId: { type: Sequelize.INTEGER, allowNull: true, references: { model: 'teams', key: 'id' }},
-  backgroundImage: { type: Sequelize.STRING, allowNull: true }
+  team_id: { type: Sequelize.INTEGER, allowNull: true, references: { model: 'teams', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'},
+  background_image: { type: Sequelize.STRING, allowNull: true }
 });
 
 // Team.hasMany(Board);
@@ -22,14 +22,17 @@ const Card = SQL_connection.define('card', {
   description: Sequelize.STRING,
   comment: Sequelize.STRING,
   list: Sequelize.STRING,
-  boardId: { type: Sequelize.INTEGER, references: { model: 'boards', key: 'id' }}
+  board_id: { type: Sequelize.INTEGER, references: { model: 'boards', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'}
 });
 
 // Board.hasMany(Card);
 
-const Card_Member = SQL_connection.define('card_member', {});
+const Card_Member = SQL_connection.define('card_member', {
+  card_id: { type: Sequelize.INTEGER, references: { model: 'cards', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'},
+  member_id: { type: Sequelize.INTEGER, references: { model: 'members', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'}
+});
 // Member.hasMany(Card);
-Card.belongsToMany(Member, { through: 'card_members' });
+// Card.belongsToMany(Member, { through: 'card_members' });  //as card_id
 
 SQL_connection.sync();
 
