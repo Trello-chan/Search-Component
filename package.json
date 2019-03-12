@@ -8,7 +8,8 @@
     "build:server": "webpack-dev-server --hot --inline",
     "seed": "node database/seedData/bin/seedEntry.js",
     "create": "node database/seedData/bin/createEntry.js",
-    "start": "nodemon server/entry.js --ignore 'client/'",
+    "start": "node server/entry.js ",
+    "start:nodemon": "nodemon server/entry.js --ignore 'client/'",
     "test": "NODE_ENV=jest jest --detectOpenHandles --forceExit"
   },
   "repository": {
@@ -33,6 +34,9 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "grunt": "^1.0.3",
+    "grunt-aws": "^0.7.1",
+    "grunt-contrib-connect": "^2.0.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.9",
     "pg": "^7.7.1",

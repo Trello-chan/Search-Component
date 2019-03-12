@@ -35,7 +35,7 @@ const getCardHelper = label =>
     limit: 6
   }); 
 
-  // select c.*, m.* from cards c inner join card_members cm on c.id = cm."cardId" inner join members m on m.id = cm."memberId" where c.label like '%__INSERT QUERY__%' order by random() limit 10;
+  // select c.*, m.* from cards c inner join card_members cm on c.id = cm."card_id" inner join members m on m.id = cm."member_id" where c.label like '%__INSERT QUERY__%' order by random() limit 10;
 
 const updateCardHelper = (id, update) =>
   Card.update(
@@ -44,7 +44,7 @@ const updateCardHelper = (id, update) =>
   )
 
 const createCardMemberAssociation = (cardId, memberId) =>
-    SQL_connection.query(`INSERT INTO card_members ("cardId", "memberId") VALUES (${cardId}, ${memberId})`)
+    SQL_connection.query(`INSERT INTO card_members ("card_id", "member_id") VALUES (${cardId}, ${memberId})`)
 
 
 export {
