@@ -43,8 +43,8 @@ const updateCardHelper = (id, update) =>
     { where: { id }}
   )
 
-const createCardMemberAssociation = (cardId, memberId) =>
-    SQL_connection.query(`INSERT INTO card_members ("card_id", "member_id") VALUES (${cardId}, ${memberId})`)
+const createCardMemberAssociation = (card_id, member_id) =>
+    SQL_connection.query(`INSERT INTO card_members ("card_id", "member_id") VALUES (${card_id}, ${member_id})`)
 
 
 export {

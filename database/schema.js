@@ -28,11 +28,12 @@ const Card = SQL_connection.define('card', {
 // Board.hasMany(Card);
 
 const Card_Member = SQL_connection.define('card_member', {
-  card_id: { type: Sequelize.INTEGER, references: { model: 'cards', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'},
-  member_id: { type: Sequelize.INTEGER, references: { model: 'members', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'}
+  // card_id: { type: Sequelize.INTEGER, references: { model: 'cards', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'},
+  // member_id: { type: Sequelize.INTEGER, references: { model: 'members', key: 'id' }, onUpdate: 'CASCADE', onDelete: 'CASCADE'}
 });
 // Member.hasMany(Card);
-// Card.belongsToMany(Member, { through: 'card_members' });  //as card_id
+Card.belongsToMany(Member, { through: 'card_members', foreignKey: 'card_id' });  //as card_id
+Member.belongsToMany(Card, { through: 'card_members', foreignKey: 'member_id' });  //as card_id
 
 SQL_connection.sync();
 
