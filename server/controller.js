@@ -62,16 +62,17 @@ const getCard = (req, res) => {
 }
 
 const updateCard = (req, res) => {
-  let { id, update, memberId } = req.body;
+  let { id, update, member_id } = req.body;
   updateCardHelper(id, update)
     .then(() => {
-      if (memberId) {
-        createCardMemberAssociation(id, memberId)
+      if (member_id) {
+        createCardMemberAssociation(id, member_id)
          .then(() => res.status(204).send('success'))
          .catch(err => res.status(404).send(err));
+      } else {
+        res.status(204).send('success');
       }
     })
-    .then(() => res.status(204).send('success'))
     .catch(err => res.status(404).send(err));
 }
 

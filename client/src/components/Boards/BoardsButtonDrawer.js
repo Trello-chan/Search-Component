@@ -21,7 +21,7 @@ class BoardsDropdownDrawer extends Component {
     e.preventDefault();
     let { query } = this.state;
     axios
-      .get(`${process.env.SERVER}/api/board?title=${query}`)
+      .get(`/search-api/board?title=${query}`)
       .then( ({ data }) => this.setState({ searchResults: data }))
       .catch(err => console.log(err));
   }

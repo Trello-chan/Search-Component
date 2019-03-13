@@ -34,8 +34,8 @@ class SearchService extends Component {
   fetchLoadData = () => {
     let id = Math.ceil(Math.random() * 100);
     axios
-      .get(`${process.env.SERVER}/api/load?id=${id}`)
-      .then(({ data }) => this.setState({ userData: data }, () => console.log(data)))
+      .get(`/search-api/load?id=${id}`)
+      .then(({ data }) => this.setState({ userData: data }))
       .catch(err => console.error(err));
   }
 

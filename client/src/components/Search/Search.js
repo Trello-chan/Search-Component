@@ -23,11 +23,8 @@ class Search extends Component {
 
   findCardLabel = (label) => {
     axios
-      .get(`${process.env.SERVER}/api/card?label=${label}`)
-      .then(({data}) => { 
-        console.log(data)
-        this.setState({ cards: data, searching: false, doneSearching: true }), () => console.log(this.state)
-      })
+      .get(`/search-api/card?label=${label}`)
+      .then(({data}) => this.setState({ cards: data, searching: false, doneSearching: true }))
       .catch(err => console.error(err));
   }
 
