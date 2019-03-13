@@ -1,44 +1,32 @@
-import React, { Component } from 'react';
-// import styled from 'styled-components';
+import React from 'react';
 const styled = window.styled;
 
-class CreateDrawer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const CreateDrawer = ({ closeDisplay }) =>
+  <DrawerContainer>
 
-    }
-  }
+    <div>
+      <div>Create</div>
+      <div onClick={closeDisplay}>&#215;</div>
+    </div>
+    
+    <hr/>
 
-  render() {
-    let { closeDisplay } = this.props;
-    return (
-      <DrawerContainer>
-        <div>
-          <div>Create</div>
-          <div onClick={closeDisplay}>&#215;</div>
-        </div>
-        
-        <hr/>
+    <ActionContainer>
+      <h4>Create Board...</h4>
+      <div>A board is made up of cards ordered on lists.  Use it to manage projects, track information, or organize anything</div>
+    </ActionContainer>
 
-        <ActionContainer>
-          <h4>Create Board...</h4>
-          <div>A board is made up of cards ordered on lists.  Use it to manage projects, track information, or organize anything</div>
-        </ActionContainer>
+    <ActionContainer>
+      <h4>Create Team...</h4>
+      <div>A team is a group of boards and people. Use it to organize your company, side hustle, family, or friends.</div>
+    </ActionContainer>
 
-        <ActionContainer>
-          <h4>Create Team...</h4>
-          <div>A team is a group of boards and people. Use it to organize your company, side hustle, family, or friends.</div>
-        </ActionContainer>
-
-        <ActionContainer>
-          <h4>Create Business Team...</h4>
-          <div>With Business Class your team has more security, administrative controls, and unlimited Power-Ups.</div>
-        </ActionContainer>
-      </DrawerContainer>
-    )
-  }
-}
+    <ActionContainer>
+      <h4>Create Business Team...</h4>
+      <div>With Business Class your team has more security, administrative controls, and unlimited Power-Ups.</div>
+    </ActionContainer>
+    
+  </DrawerContainer>
 
 const DrawerContainer = styled.div`
   background: white;

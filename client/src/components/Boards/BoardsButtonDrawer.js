@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
-const styled = window.styled;
 import axios from 'axios';
+const styled = window.styled;
 
 import Result from './Result';
 
@@ -174,7 +173,6 @@ const StarAdvice = styled.div`
   line-height: 1.5;
   margin: 9px 42px 0px 26px;
 `
-
 
 const PaddedDrawerBox = styled.div`
   cursor: pointer;

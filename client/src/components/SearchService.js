@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
-const styled = window.styled;
 import axios from 'axios';
+const styled = window.styled;
 
 import HomeButton from './cssImages/home';
 import BoardImage from './cssImages/board';
@@ -68,7 +67,6 @@ class SearchService extends Component {
           <StyledButton onClick={() => this.changeDisplay('info')}>ℹ</StyledButton>
           <StyledButton onClick={() => this.changeDisplay('notification')}>&#128276;</StyledButton>
           {member && <UserButton member={member}/>}
-          {/* member logo */}
         </RightSideContainer>
         {displayOptions === 'boards' && <BoardsButtonDrawer boards={boards}/>}
         {displayOptions === 'create' && <CreateDrawer closeDisplay={() => this.changeDisplay(displayOptions)}/>}
