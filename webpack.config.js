@@ -8,11 +8,9 @@ module.exports = {
     index: ['@babel/polyfill/noConflict', path.join(__dirname, './client/src/index.js')],
     search: ['@babel/polyfill/noConflict', path.join(__dirname, './client/src/components/Search/Search.js')],
   },
-  // entry: ['@babel/polyfill/noConflict', path.join(__dirname, './client/src/index.js')],
   output: {
     path: path.resolve(__dirname, './client/dist'),
     filename: 'search-[name]-bundle.js',
-    // filename: 'bundle.js'
   },
   optimization: {
     splitChunks: {
