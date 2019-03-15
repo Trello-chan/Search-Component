@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './client/dist'),
-    filename: 'search-[name]-bundle.js',
+    filename: '[name].[contenthash].js',
   },
   optimization: {
     splitChunks: {

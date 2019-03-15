@@ -1,7 +1,10 @@
 node_modules
 config.js
 database/seedData/data/
-*bundle.js*
+
+client/dist/*.js
+client/dist/*.gz
+
 yarn-error.log
 .aws.json
 .env
