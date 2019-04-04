@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const styled = window.styled;
 
 class InfoDrawer extends Component {
   constructor(props) {

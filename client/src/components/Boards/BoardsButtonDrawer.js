@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const styled = window.styled;
 
 import Result from './Result';
 
@@ -109,7 +108,6 @@ class BoardsDropdownDrawer extends Component {
 const DrawerContainer = styled.div`
   background-color: white;
   border-radius: 0px 2px 2px 0px;
-  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   left: 0px;
   overflow: scroll;
   padding: 5px;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const styled = window.styled;
 
 import HomeButton from './cssImages/home';
 import BoardImage from './cssImages/board';
@@ -43,7 +42,6 @@ class SearchService extends Component {
     let { boards, member } = this.state.userData;
     return (
       <StyledSearchComponent>
-        <GlobalStyle />
         <StyledButton>
           <HomeButton />
         </StyledButton>
@@ -77,13 +75,11 @@ class SearchService extends Component {
   }
 }
 
-const GlobalStyle = styled.createGlobalStyle`
-  body {
-    background: blue;
-    height: 100vh;
-    margin: 0px;
-  }
-`
+const flexAlignJustify = `
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
 
 const StyledSearchComponent = styled.div`
   background: rgba(0,0,0,.35);
@@ -94,7 +90,6 @@ const StyledSearchComponent = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 14px;
-  font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   align-items: center;
 `;
 
@@ -104,9 +99,7 @@ const StyledButton = styled.div`
   cursor: pointer;
   height: 32px;
   width: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexAlignJustify}
   margin-right: 3px;
   &:hover {
     background-color: rgba(210,210,210,.35);
@@ -117,10 +110,8 @@ const LogoContainer = styled.div`
   position: absolute;
   margin-left: 50%;
   > :nth-child(1) {
-    display: flex;
+    ${flexAlignJustify}
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     opacity: 0.5;
     width: 100%;
     color: white;
@@ -177,9 +168,7 @@ const BlankSpace = styled.div`
 
 const StyledSearchTopContainer = styled.div`
   border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexAlignJustify}
   margin-right: 3.5px;
   max-width: 280px;
   min-width: 32px;

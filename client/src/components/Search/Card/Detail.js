@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const styled = window.styled;
 
 import CardImage from '../../cssImages/cards';
 import TextAlignImage from '../../cssImages/textAlign';

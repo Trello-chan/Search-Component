@@ -1,46 +1,31 @@
-import React, { Component } from 'react';
-// import styled from 'styled-components';
-const styled = window.styled;
+import React from 'react';
 
 import Actions from './Actions';
 import Add from './Add';
 import Detail from './Detail';
 import CardImage from '../../cssImages/cards';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state ={
-
-    }
-  }
-
-  render() {
-    let { card, handleCardClick } = this.props;
-    return (
-      <ModalOverlay onClick={() => handleCardClick(null)}>
-        <CardDisplay onClick={(e) => e.stopPropagation()}>
-          <CardHeader>
-            <CardImage />
-            <div>
-              <CardHeaderTextArea>{card.label}</CardHeaderTextArea>
-              <div>in list <u>{card.boardId}</u></div>
-            </div>
-            <div onClick={() => handleCardClick(null)}>&#215;</div>
-          </CardHeader>
-          <div>
-            <Detail card={card}/>
-            {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
-            <div>
-              <Actions />
-              <Add />
-            </div>
-          </div>
-        </CardDisplay>
-      </ModalOverlay>
-    )
-  }
-}
+const Card = ({ card, handleCardClick }) =>
+  <ModalOverlay onClick={() => handleCardClick(null)}>
+    <CardDisplay onClick={(e) => e.stopPropagation()}>
+      <CardHeader>
+        <CardImage />
+        <div>
+          <CardHeaderTextArea>{card.label}</CardHeaderTextArea>
+          <div>in list <u>{card.boardId}</u></div>
+        </div>
+        <div onClick={() => handleCardClick(null)}>&#215;</div>
+      </CardHeader>
+      <div>
+        <Detail card={card}/>
+        {/* instead of making entire screen scroll, the left half should scroll if height exceeds CardDisplay */}
+        <div>
+          <Actions />
+          <Add />
+        </div>
+      </div>
+    </CardDisplay>
+  </ModalOverlay>
 
 const ModalOverlay = styled.div`
   background-color: rgba(0,0,0,.64);
@@ -117,4 +102,5 @@ const CardHeaderTextArea = styled.textarea`
     outline: none;
   }
 `;
+
 export default Card;
