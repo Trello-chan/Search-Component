@@ -9,7 +9,8 @@
 Mock of Trello's search bar component feature broken up into its own microservice.  All the components are brought together by the Proxy Server
 
 ## Preview
-...in progress.  To be uploaded by EOD June 7, 2019
+![2019-06-07 Search demo 1](SearchDemo1.gif)
+![2019-06-07 Search demo 2](SearchDemo2.gif)
 
 ## Features
 - On load, queries for a random user from PostgreSQL DBMS hosted on AWS RDS
